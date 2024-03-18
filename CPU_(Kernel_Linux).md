@@ -1,7 +1,7 @@
 <!-- Texto -->
 # Arquitectura del Computador
 ## Integrantes:
-- José Manuel Díaz. (CI: 25682785)
+- José Manuel Díaz Moreno. (CI: 25682785)
 - José Gregorio Campos. (CI: 25110846)
 ##
 
