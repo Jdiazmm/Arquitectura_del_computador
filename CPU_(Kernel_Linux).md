@@ -1,8 +1,8 @@
 <!-- Texto -->
 # Arquitectura del Computador
 ## Integrantes:
-- José Manuel Díaz. (CI:25682785)
-- José Gregorio Campos. (CI:25110846)
+- José Manuel Díaz. (CI: 25682785)
+- José Gregorio Campos. (CI: 25110846)
 ##
 
 **PROPUESTA DE COMO ARMAR UNA PC CON KERNEL LINUX.**
