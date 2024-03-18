@@ -208,7 +208,7 @@ La pasta térmica, es una sustancia de color gris plateado que se aplica al proc
 - Adecuado para:			Toda la CPU y GPU
 - Número de fabricante:		TH-201201
 - Marca:				héroe termal
-- País y región de producción:	Porcelana
+- País y región de producción:	China
 - Conductividad térmica:		≤12W/mk
 - EAN:					0746603759425
 ##
