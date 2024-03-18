@@ -1,8 +1,8 @@
 <!-- Texto -->
 # Arquitectura del Computador
 ## Integrantes:
-- Díaz Moreno, José Manuel
-- José Campos
+- José Manuel Díaz (25682785)
+- José Gregorio Campos (25110846)
 ##
 
 **PROPUESTA DE COMO ARMAR UNA PC CON KERNEL LINUX.**
