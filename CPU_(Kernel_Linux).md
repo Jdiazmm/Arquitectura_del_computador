@@ -79,7 +79,7 @@ La placa base es el componente principal que conecta todos los demás componente
 ### Especificaciones:
 <https://www.amazon.com/-/es/Placa-Z790-P-etapas-potencia-Thunderbolt/dp/B0BG6LGNDB>
 
-![Esta es una imagen de ejemplo](blob:https://web.whatsapp.com/a3aa0fe5-b90e-427e-8224-06e4f098b179)
+![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/main/CPU_(pictures)/02%20-%20placa%20Base.jpg)
 
 
 ##
@@ -97,7 +97,7 @@ La Memoria RAM o memoria de acceso aleatorio por su nombre en inglés, Random Ac
 ### Especificaciones:
 <https://www.amazon.com/-/es/CORSAIR-VENGEANCE-Memoria-computadora-compatible/dp/B0BXHC74WD?th=1>
 
-![Esta es una imagen de ejemplo](blob:https://web.whatsapp.com/6cbc8a89-067d-4b4d-95c8-dc79eb128052)
+![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/main/CPU_(pictures)/03%20-%20Memoria%20RAM.jpg)
 
 
 ##
@@ -120,7 +120,7 @@ Los dispositivos de almacenamiento, como un disco duro o una unidad de estado s�
 ### Especificaciones:
 <https://www.amazon.com/-/es/Samsung-2000-Express-V-NAND-W127158676/dp/B0B9C4DKKG>
 
-![Esta es una imagen de ejemplo](blob:https://web.whatsapp.com/d4a86fea-a1bb-4463-8eb0-4b8ee671b692)
+![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/main/CPU_(pictures)/04%20-%20Almacenamiento.jpg)
 
 
 ##
@@ -140,7 +140,7 @@ Si se planea utilizar un CPU para tareas gráficas intensivas, como juegos o dis
 ### Especificaciones:
 <https://www.amazon.com/-/es/Tarjeta-gr%C3%A1fica-GeForce-Uprising-renovada/dp/B092ZWXZVS?th=1>
 
-![Esta es una imagen de ejemplo](blob:https://web.whatsapp.com/c4d81051-2adc-4ba8-aa5c-c7e2d9e5eeaf)
+![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/main/CPU_(pictures)/05%20-%20Targeta%20Gr%C3%A1fica.jpg)
 
 
 ##
@@ -165,7 +165,7 @@ La fuente de alimentación es responsable de suministrar energía a todos los co
 ### Especificaciones:
 <https://www.amazon.com/-/es/Corsair-alimentaci%C3%B3n-totalmente-modular-RM1000e/dp/B0BYQHWJXC?th=1>
 
-![Esta es una imagen de ejemplo](blob:https://web.whatsapp.com/11efdf4e-6688-4f47-aca5-39e257d9f90e)
+![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/main/CPU_(pictures)/06%20-%20Fuente%20de%20Alimentaci%C3%B3n.jpg)
 
 
 ##
@@ -189,7 +189,7 @@ El gabinete de una computadora es la pieza encargada de proteger las partes que 
 ### Especificaciones:
 <https://www.amazon.com/-/es/Cooler-Master-enfriadora-micro-ATX-soporte/dp/B0785GRMPG>
 
-![Esta es una imagen de ejemplo](blob:https://web.whatsapp.com/5ee049e0-cec4-41bb-b7d9-3619caa931b0g)
+![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/main/CPU_(pictures)/07%20-%20Gabinete%20o%20Carcasa.jpg)
 
 
 ##
@@ -216,7 +216,7 @@ La pasta térmica, es una sustancia de color gris plateado que se aplica al proc
 ### Especificaciones:
 <https://www.ebay.com/itm/235333899905?itmmeta=01HS813BHM0FWPB027HPT6S4D0&hash=item36cafe5681:g:WDAAAOSwz2NlcJXd&itmprp=enc%3AAQAIAAAA0GG4B0vxVultjvEgcLuw%2FtPI16RjWsPrLR3fJqnTvPmWDJqXjrQrgFLXfPZLJmLyTljqyNJmETDkXTjGoSZSXUkODCXM4u3km5SQ%2B3IB2ida38bl%2BjZE6TDefaSESGZzAfh5uwLIA8gIIdZShTMlqqcA7j6HBGsJjYN2zdlHf5QG5hDGNLEY6SX78LFMvsqKODnsX12swBWcPVMe%2FOo23qVxBhdG9lWBCMm313X%2BSdvr%2BKuXSAlV%2BIS0xzui0YDCbPEDV2gA7uO9i5pFQgk%2BUO4%3D%7Ctkp%3ABk9SR_q4jYHKYw>
 
-![Esta es una imagen de ejemplo](file:///C:/Users/9020/Downloads/Screenshot_5.png)
+![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/main/CPU_(pictures)/08%20-%20Pasta%20T%C3%A9rmica.png)
 
 
 
