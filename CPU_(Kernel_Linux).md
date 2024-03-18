@@ -206,7 +206,6 @@ La pasta térmica, es una sustancia de color gris plateado que se aplica al proc
 - Compatibilidad de marca:	Universal
 - Material:				Oxido de aluminio
 - Adecuado para:			Toda la CPU y GPU
-- Garantía del fabricante:		5 años sin abrir
 - Número de fabricante:		TH-201201
 - Marca:				héroe termal
 - País y región de producción:	Porcelana
