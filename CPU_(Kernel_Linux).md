@@ -56,7 +56,7 @@ El procesador o unidad central de procesamiento (CPU) es el "motor" de la comput
 ### Especificaciones:
 <https://www.amazon.com/-/es/i9-14900K-procesador-escritorio-gr%C3%A1ficos-integrados/dp/B0CGJDBCTK?th=1>
 
-![Esta es una imagen de ejemplo](blob:https://web.whatsapp.com/4212790f-1f87-4410-ab4a-c26148f025b1)
+![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/main/CPU_(pictures)/01%20-%20Procesadpr.jpg)
 
 
 ##
