@@ -2,7 +2,6 @@
 # Arquitectura del Computador
 ## Integrantes:
 - José Manuel Díaz Moreno. (CI: 25682785)
-- José Gregorio Campos. (CI: 25110846)
 ##
 
 **PROPUESTA DE COMO ARMAR UNA PC CON KERNEL LINUX.**
@@ -22,14 +21,14 @@ Para armar una computadora con el Kernel de Lunix son necesarios componentes com
 
 |Componentes|Precio|
 |--------|--------|
-|   Procesador    | $ 574,00   |
-|   Placa base  | $ 226,58   |
-|   Memoria RAM    | $ 114,99   |
-|   Almacenamiento    | $ 196,95   |
-|   Tarjeta gráfica    |   $  1.199,99   |
-|  Fuente de alimentación   |  $ 139,99     |
-|  Gabinete o Carcasa   |  $ 39,99     |
-|  Pasta térmica   |  $ 7,51       |
+|   Procesador    | $ 439,00   |
+|   Placa base  | $ 529,99   |
+|   Memoria RAM    | $ 102,99   |
+|   Almacenamiento    | $ 193,95   |
+|   Tarjeta gráfica    |   $  1.029,99   |
+|  Fuente de alimentación   |  $ 159,99     |
+|  Gabinete o Carcasa   |  $ 37,99     |
+|  Pasta térmica   |  $ 6,10       |
 | TOTAL                |  $ 2500,00      |
 | Sobrante             |  $    0,00      |
 | Presupuesto       | $ 2500,00               |
@@ -56,7 +55,7 @@ El procesador o unidad central de procesamiento (CPU) es el "motor" de la comput
 ### Especificaciones:
 <https://www.amazon.com/-/es/i9-14900K-procesador-escritorio-gr%C3%A1ficos-integrados/dp/B0CGJDBCTK?th=1>
 
-![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/main/CPU_(pictures)/01%20-%20Procesadpr.jpg)
+![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/refs/heads/main/CPU_(pictures)/01%20-%20Procesadpr.png)
 
 
 ##
@@ -69,17 +68,17 @@ La placa base es el componente principal que conecta todos los demás componente
 - Zócalo de CPU:					LGA 1700
 - Dispositivos compatibles:			Ordenador personal
 - Tecnología de memoria RAM:			DDR5
-- Procesadores compatibles:			Intel
+- Procesadores compatibles:			Intel Core de 14ª y 13ª generación
 - Tipo de set de chips:				Intel Z790
-- Velocidad de memoria del reloj:		7000 MHz
-- Plataforma:						PlayStation 5
-- Nombre del modelo:				PRIME Z790-P WIFI
-- Capacidad de almacenamiento de memoria:	128 GB
+- Plataforma:						Windows
+- Nombre del modelo:				ROG MAXIMUS Z790 HÉROE OSCURO
+- Modelo de CPU:          Pentium
+- Capacidad de almacenamiento de memoria:  64 GB
 ##
 ### Especificaciones:
-<https://www.amazon.com/-/es/Placa-Z790-P-etapas-potencia-Thunderbolt/dp/B0BG6LGNDB>
+<https://www.amazon.com/-/es/ROG-Maximus-Z790-generaci%C3%B3n-Thunderbolt/dp/B0CJMT2723/ref=sr_1_13?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=15H20G77XBXZ5&dib=eyJ2IjoiMSJ9.t_0619WSs-fo2BlfNwIdHF08CecmPNDEzBfTYyxKTctZx-PbHiRJNJ84VlbqHB9TJ0sFROYyAV2SIqCroFPzNZZb3dFyF49OVzgRHnTV4551AEYRNuJG3r6nn_WWkqb8sQlzE9dQgCFfBIQdmMR2MmHsy-gOjE_4X6LtNfiHmg9rHc60TLKQXcmWkmbeNgtHl365DXirlaMFW3DSXVBjeXcSTeI2bDWcQqZTRiIs7OY.B-tAwvCPw5AGqLlmf9OQQF1MMnNzp2_weTgVT-RC6RI&dib_tag=se&keywords=ASUS%2BPlaca%2Bbase&qid=1731286283&sprefix=asus%2Bplaca%2Bbase%2B%2Caps%2C133&sr=8-13&th=1>
 
-![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/main/CPU_(pictures)/02%20-%20placa%20Base.jpg)
+![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/refs/heads/main/CPU_(pictures)/02%20-%20placa%20Base.png)
 
 
 ##
@@ -97,7 +96,7 @@ La Memoria RAM o memoria de acceso aleatorio por su nombre en inglés, Random Ac
 ### Especificaciones:
 <https://www.amazon.com/-/es/CORSAIR-VENGEANCE-Memoria-computadora-compatible/dp/B0BXHC74WD?th=1>
 
-![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/main/CPU_(pictures)/03%20-%20Memoria%20RAM.jpg)
+![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/refs/heads/main/CPU_(pictures)/03%20-%20Memoria%20RAM.png)
 
 
 ##
@@ -120,7 +119,7 @@ Los dispositivos de almacenamiento, como un disco duro o una unidad de estado s�
 ### Especificaciones:
 <https://www.amazon.com/-/es/Samsung-2000-Express-V-NAND-W127158676/dp/B0B9C4DKKG>
 
-![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/main/CPU_(pictures)/04%20-%20Almacenamiento.jpg)
+![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/refs/heads/main/CPU_(pictures)/04%20-%20Almacenamiento.png)
 
 
 ##
@@ -138,9 +137,9 @@ Si se planea utilizar un CPU para tareas gráficas intensivas, como juegos o dis
 - Fabricante de procesador de gráficos: NVIDIA
 ##
 ### Especificaciones:
-<https://www.amazon.com/-/es/Tarjeta-gr%C3%A1fica-GeForce-Uprising-renovada/dp/B092ZWXZVS?th=1>
+<https://www.amazon.com/-/es/Tarjeta-gr%C3%A1fica-GeForce-Gaming-renovada/dp/B092XB1JGD/ref=sr_1_7?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1KJFOEWBVJQ0Y&dib=eyJ2IjoiMSJ9.ox3rEiUQ9OihNtAZj_VhqtwT-THtQeb1VGqLWgJ-fy5ixJukLO9_FTiPS8CAxiTK_rDL9CpkEJ2JZuInmw2fJClVXQpAsOAfL2bOhScn-3Zzx-hjXp378476ZQ5x988GGSQu5485C1O38CxwFGAx2FUYtMSr-xXuIVmba_rfiUVXeo4eYqlQWrPxv6U3t_GQZh22coJBUDb3akG7EgGK_ZLe1S3l9AJqgaX3xPmXktU.2PpFLzkJGVkzZBmCZUdgmTm3fB7kfLA8_23LZ_1z9vk&dib_tag=se&keywords=Tarjeta+gr%C3%A1fica+de+triple+ventilador&qid=1731284808&sprefix=tarjeta+gr%C3%A1fica+de+triple+ventilador%2Caps%2C107&sr=8-7#renewedProgramDescriptionBtf_feature_div>
 
-![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/main/CPU_(pictures)/05%20-%20Targeta%20Gr%C3%A1fica.jpg)
+![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/refs/heads/main/CPU_(pictures)/05%20-%20Targeta%20Gr%C3%A1fica.png)
 
 
 ##
@@ -165,7 +164,7 @@ La fuente de alimentación es responsable de suministrar energía a todos los co
 ### Especificaciones:
 <https://www.amazon.com/-/es/Corsair-alimentaci%C3%B3n-totalmente-modular-RM1000e/dp/B0BYQHWJXC?th=1>
 
-![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/main/CPU_(pictures)/06%20-%20Fuente%20de%20Alimentaci%C3%B3n.jpg)
+![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/refs/heads/main/CPU_(pictures)/06%20-%20Fuente%20de%20Alimentaci%C3%B3n.png)
 
 
 ##
@@ -189,7 +188,7 @@ El gabinete de una computadora es la pieza encargada de proteger las partes que 
 ### Especificaciones:
 <https://www.amazon.com/-/es/Cooler-Master-enfriadora-micro-ATX-soporte/dp/B0785GRMPG>
 
-![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/main/CPU_(pictures)/07%20-%20Gabinete%20o%20Carcasa.jpg)
+![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/refs/heads/main/CPU_(pictures)/07%20-%20Gabinete%20o%20Carcasa.png)
 
 
 ##
@@ -201,21 +200,14 @@ La pasta térmica, es una sustancia de color gris plateado que se aplica al proc
 
 ##
 - Tipo de producto:			Pasta térmica
-- Color de la luz del ventilador:	Grado
-- Embalaje:				Inyección
-- Compatibilidad de marca:	Universal
-- Material:				Oxido de aluminio
-- Adecuado para:			Toda la CPU y GPU
-- Número de fabricante:		TH-201201
-- Marca:				héroe termal
-- País y región de producción:	China
-- Conductividad térmica:		≤12W/mk
-- EAN:					0746603759425
+- Número de fabricante:		No aplicable
+- Marca:				Sin marca
+- EAN:					4060787071071
 ##
 ### Especificaciones:
-<https://www.ebay.com/itm/235333899905?itmmeta=01HS813BHM0FWPB027HPT6S4D0&hash=item36cafe5681:g:WDAAAOSwz2NlcJXd&itmprp=enc%3AAQAIAAAA0GG4B0vxVultjvEgcLuw%2FtPI16RjWsPrLR3fJqnTvPmWDJqXjrQrgFLXfPZLJmLyTljqyNJmETDkXTjGoSZSXUkODCXM4u3km5SQ%2B3IB2ida38bl%2BjZE6TDefaSESGZzAfh5uwLIA8gIIdZShTMlqqcA7j6HBGsJjYN2zdlHf5QG5hDGNLEY6SX78LFMvsqKODnsX12swBWcPVMe%2FOo23qVxBhdG9lWBCMm313X%2BSdvr%2BKuXSAlV%2BIS0xzui0YDCbPEDV2gA7uO9i5pFQgk%2BUO4%3D%7Ctkp%3ABk9SR_q4jYHKYw>
+<https://www.ebay.com/itm/281172235978?_skw=pasta+termica+para+pc&itmmeta=01JCCRBZTMNPN0FYPH3EVJSWEM&hash=item41772bd6ca:g:Z8AAAOSwXTVcMVzZ&itmprp=enc%3AAQAJAAAA8HoV3kP08IDx%2BKZ9MfhVJKmslnsguxnXuf%2BPBLrRYAng29c7MWsinNTmqCNs0Xixq%2FWiraM9W5BRVBDp6glIHN7eerT4mNI%2FynjPk3hWyjci0h2vqKyCTOmoNyp7oznKuJMTjTlfJLWwbpleeRpu132PDVchBafqaXlDk5f9g7r9O4YBnltFrkibxSGb6GyESFIOGg3lEHeNQgNBdqOWoyExUpi7aBa1yDeCauwI%2FLt7hHND2t9bhwxU0WJGBPwhS3ztCCwtsOwQrymkzFbot1Qf2EmsSaKgomBCTHhDrpBV51OsmyjUKWAoeewuHXvQhg%3D%3D%7Ctkp%3ABFBMuP2vmONk>
 
-![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/main/CPU_(pictures)/08%20-%20Pasta%20T%C3%A9rmica.png)
+![Esta es una imagen de ejemplo](https://raw.githubusercontent.com/Jdiazmm/Arquitectura_del_computador/refs/heads/main/CPU_(pictures)/08%20-%20Pasta%20T%C3%A9rmica.png)
 
 
 
