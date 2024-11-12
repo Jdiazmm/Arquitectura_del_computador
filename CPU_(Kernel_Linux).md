@@ -106,13 +106,13 @@ Los dispositivos de almacenamiento, como un disco duro o una unidad de estado s�
 ##
 **Características:**
 - Capacidad de almacenamiento digital:	2 TB
-- Interfaz de disco duro:	NVMe
-- Tecnología de conectividad:	SATA
+- Interfaz de disco duro:	PC Card
+- Tecnología de conectividad:	NVMe
 - Marca:	SAMSUNG
 - Características especiales:	Portátil
 - Factor de forma de disco duro:	2,5 Pulgadas
-- Descripción del disco duro:	Nvme
-- Dispositivos compatibles:	Escritorio
+- Descripción del disco duro:	Disco SSD
+- Dispositivos compatibles:	Laptop, PC, Portátil, Consola de juegos, Playstation5
 - Tipo de instalación:    Disco duro interno
 - Color:	Negro
 ##
@@ -154,11 +154,11 @@ La fuente de alimentación es responsable de suministrar energía a todos los co
 - Dispositivos compatibles:	Computadora Personal
 - Tipo de conector:	ATX
 - Potencia de salida:	1000
+- Factor de forma:  ATX
 - Potencia:	1000 vatios
+- Método de refrigeración: Aire
 - Dimensiones del artículo LxWxH:	5,91 x 5,51 x 3,39 pulgadas
 - Peso del artículo:	3,66 Libras
-- Diseño de fuente de alimentación:	Completamente modular
-- Configuración del conector PCI-Express:	8 pines
 
 ##
 ### Especificaciones:
@@ -181,9 +181,9 @@ El gabinete de una computadora es la pieza encargada de proteger las partes que 
 - Color:	Negro
 - Material:	Acero aleado Plástico
 - Tipo de montaje de fuente de alimentación:	Montaje inferior
-- Método de refrigeración:	Ventilador
+- Método de refrigeración:	Aire
+- Nombre del modelo:  Q300L
 - Peso del artículo:	480 Gramos
-- Dimensiones del producto:	15,39"D x 9,06"Ancho x 15"Altura pulgadas
 ##
 ### Especificaciones:
 <https://www.amazon.com/-/es/Cooler-Master-enfriadora-micro-ATX-soporte/dp/B0785GRMPG>
