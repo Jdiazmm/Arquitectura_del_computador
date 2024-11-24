@@ -27,7 +27,7 @@ Existen muchas maneras de compilar el Kernel (casi una por cada distribución). 
 
 De vez en cuando surgen dudas acerca de la necesidad de compilar el Kernel cuando se libera una nueva versión; sin embargo, solamente se compila una nueva versión de Kernel cuando se tienen dispositivos de hardware muy recientes y forzosamente se tiene que migrar hacia una versión que incluya módulos para el soporte de este.
 
-Todo el proceso se puede resumir en los siguientes pasos generales para todas las distros:
+**Todo el proceso se puede resumir en los siguientes pasos generales para todas las distros:**
 1.	Obtener las fuentes del Kernel.
 2.	Instalar las herramientas necesarias para la compilación (gcc, build-essentials, etc.).
 3.	Descomprimir las fuentes del Kernel en /usr/src/
@@ -36,12 +36,12 @@ Todo el proceso se puede resumir en los siguientes pasos generales para todas la
 6.	Instalar el Kernel compilado (make install).
 7.	Crear la imagen (initrd) para el nuevo Kernel y ajustar grub para que la encuentre.
 
-Consideraciones importantes
+**Consideraciones importantes:**
 -  La compilación del Kernel es un proceso intensivo en términos de recursos de la computadora.
 -  Requiere tiempo significativo (horas o incluso días dependiendo de la velocidad del equipo).
 -  Es posible compilar el Kernel en máquinas virtuales, pero requiere ajustes adicionales.
 
-Recomendaciones prácticas
+**Recomendaciones prácticas:**
 -  Usar una versión estable del Kernel como base para la compilación.
 -  Basar la configuración en el Kernel existente para minimizar cambios.
 -  Dividir la compilación en etapas si el tiempo de compilación es excesivo.
@@ -57,14 +57,14 @@ Hay que recordar que aunque estas son recomendaciones generales, la experiencia 
 **3) ARMAR PC (PARA COMPILAR KERNEL LINUX).**
 
 <P>
-Para que una computadora pueda compilar el Kernel de Linux es necesario que cumpla con los siguientes requisitos mínimos:
+**Para que una computadora pueda compilar el Kernel de Linux es necesario que cumpla con los siguientes requisitos mínimos:**
 
 -  Procesador de 64 bits (x86-64 o AMD64)
 -  Al menos 8 GB de RAM
 -  Disco duro SSD con al menos 10 GB de espacio libre
 -  Sistema operativo Linux instalado
 
-También existen recomendaciones alternativas como:
+**También existen recomendaciones alternativas como:**
 
 -  Procesador de alto rendimiento (Core i7 o superior)
 -  Más RAM (16 GB o más)
