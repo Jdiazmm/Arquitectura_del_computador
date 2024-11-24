@@ -8,6 +8,8 @@
 
 ##
 
+##
+
 **KERNEL LINUX**
 
 <P>  
@@ -15,6 +17,10 @@ El Kernel Linux representa el núcleo los sistemas operativos (SO) Linux y se in
 
 Por ejemplo, para desbloquear un teléfono utilizando un escáner de huella digital, el dueño del dispositivo debe dirigir su dedo al escáner (hardware) y este le indicará al Kernel que se ha reconocido la huella. A partir de ahí, el Kernel le indicará al software que verifique si esa huella es correcta o no y, en caso de ser así, tu teléfono se iniciará.
 <p>
+
+##
+
+##
 
 **COMPILACIÓN DE KERNEL LINUX**
 
@@ -46,6 +52,10 @@ Hay que recordar que aunque estas son recomendaciones generales, la experiencia 
 
 <p>
 
+##
+
+##
+
 **ARMAR PC (PARA COMPILAR KERNEL LINUX)**
 
 <P>
@@ -70,6 +80,7 @@ En este caso, los componentes a utilizar para armar el computador serán: un pro
 <p>
 
 ## 
+
 ## Propuesta: $ 2500,00
 
 <!-- Tablas -->
