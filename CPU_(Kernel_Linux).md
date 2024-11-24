@@ -74,7 +74,7 @@ Hay que recordar que aunque estas son recomendaciones generales, la experiencia 
 
 Es importante tener en cuenta que existen muchas distribuciones de Linux, y cada una puede tener componentes adicionales o personalizaciones específicas. Por lo tanto, los componentes mencionados anteriormente son los principales y más comunes en los sistemas operativos Linux con Kernel Linux, pero no los únicos.
 
-En este caso, los componentes a utilizar para armar el computador serán: un procesador, una placa base, una memoria RAM, un disco duro de almacenamiento, una tarjeta gráfica y una fuente de alimentación.
+En este caso, los componentes a utilizar para armar el computador serán: un procesador, una placa base, una memoria RAM, un disco duro de almacenamiento, una tarjeta gráfica, una fuente de alimentación y una carcasa.
 
 <p>
 
