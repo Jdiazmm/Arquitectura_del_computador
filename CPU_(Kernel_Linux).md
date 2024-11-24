@@ -46,7 +46,7 @@ De vez en cuando surgen dudas acerca de la necesidad de compilar el Kernel cuand
 -  Basar la configuración en el Kernel existente para minimizar cambios.
 -  Dividir la compilación en etapas si el tiempo de compilación es excesivo.
 
-Hay que recordar que aunque estas son recomendaciones generales, la experiencia personal juega un papel importante en la elección del equipo adecuado para el caso específico de cada quien
+Hay que recordar que aunque estas son recomendaciones generales, la experiencia personal juega un papel importante en la elección del equipo adecuado para el caso específico de cada quien.
 
 <p>
 
