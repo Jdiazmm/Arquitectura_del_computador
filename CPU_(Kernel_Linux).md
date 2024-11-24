@@ -27,7 +27,7 @@ Existen muchas maneras de compilar el Kernel (casi una por cada distribución). 
 
 De vez en cuando surgen dudas acerca de la necesidad de compilar el Kernel cuando se libera una nueva versión; sin embargo, solamente se compila una nueva versión de Kernel cuando se tienen dispositivos de hardware muy recientes y forzosamente se tiene que migrar hacia una versión que incluya módulos para el soporte de este.
 
-**Todo el proceso se puede resumir en los siguientes pasos generales para todas las distros:**
+**Todo el proceso se puede resumir en los siguientes pasos generales para todas las versiones:**
 1.	Obtener las fuentes del Kernel.
 2.	Instalar las herramientas necesarias para la compilación (gcc, build-essentials, etc.).
 3.	Descomprimir las fuentes del Kernel en /usr/src/
