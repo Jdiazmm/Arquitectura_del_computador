@@ -4,16 +4,68 @@
 - José Manuel Díaz Moreno. (CI: 25682785)
 ##
 
-**PROPUESTA DE COMO ARMAR UNA PC CON KERNEL LINUX.**
+**PROPUESTA DE COMO ARMAR UNA PC QUE COMPILE KERNEL LINUX.**
 ##
 
-<P>**Kernel Linux**
-  
+**Kernel Linux**
+
+<P>  
 El Kernel Linux representa el núcleo los sistemas operativos (SO) Linux y se instala como software en la computadora. Es la parte de software más importante de cualquier sistema operativo ya que su principal función es encargarse de controlar todas las funciones principales del hardware del ordenador; es decir, permite a todo el software tener acceso al hardware. Por esto mismo, es responsable de la comunicación y gestión de recursos entre el hardware de la computadora y los procesos del sistema.
 
-Muchas veces surgen dudas acerca de la necesidad de compilar el Kernel cuando se libera una nueva versión: no hay que dudar, solamente se compila una nueva versión de Kernel cuando se tiene dispositivos de hardware muy recientes y forzosamente se tiene que migrar hacia una versión que incluya módulos para el soporte de este.
+Por ejemplo, para desbloquear un teléfono utilizando un escáner de huella digital, el dueño del dispositivo debe dirigir su dedo al escáner (hardware) y este le indicará al Kernel que se ha reconocido la huella. A partir de ahí, el Kernel le indicará al software que verifique si esa huella es correcta o no y, en caso de ser así, tu teléfono se iniciará.
+<p>
 
-Para armar una computadora con el Kernel de Lunix son necesarios componentes como la CPU, la placa base, la memoria RAM, el almacenamiento, la tarjeta gráfica y la fuente de alimentación. Es importante tener en cuenta que existen muchas distribuciones de Linux, y cada una puede tener componentes adicionales o personalizaciones específicas. Por lo tanto, los componentes mencionados anteriormente son los principales y más comunes en los sistemas operativos Linux con Kernel Linux, pero no los únicos.
+**Compilación de Kernel Linux**
+
+<P>
+Existen muchas maneras de compilar el Kernel (casi una por cada distribución). Esto implica que hay que estar informado sobre la versión que se pretenda usar (ya sea Red Hat, Debian, Slackware, etc) pues es probable que por algún módulo excluido o incluido sin necesidad se podrían generar conflictos e incluso podría no funcionar correctamente.
+
+De vez en cuando surgen dudas acerca de la necesidad de compilar el Kernel cuando se libera una nueva versión; sin embargo, solamente se compila una nueva versión de Kernel cuando se tienen dispositivos de hardware muy recientes y forzosamente se tiene que migrar hacia una versión que incluya módulos para el soporte de este.
+
+Todo el proceso se puede resumir en los siguientes pasos generales para todas las distros:
+1.	Obtener las fuentes del Kernel.
+2.	Instalar las herramientas necesarias para la compilación (gcc, build-essentials, etc.).
+3.	Descomprimir las fuentes del Kernel en /usr/src/
+4.	Configurar el Kernel (ej. make menuconfig).
+5.	Compilar (make), compilar los módulos (make modules), instalar los módulos (make modules_install).
+6.	Instalar el Kernel compilado (make install).
+7.	Crear la imagen (initrd) para el nuevo Kernel y ajustar grub para que la encuentre.
+
+Consideraciones importantes
+-  La compilación del Kernel es un proceso intensivo en términos de recursos de la computadora.
+-  Requiere tiempo significativo (horas o incluso días dependiendo de la velocidad del equipo).
+-  Es posible compilar el Kernel en máquinas virtuales, pero requiere ajustes adicionales.
+
+Recomendaciones prácticas
+-  Usar una versión estable del Kernel como base para la compilación.
+-  Basar la configuración en el Kernel existente para minimizar cambios.
+-  Dividir la compilación en etapas si el tiempo de compilación es excesivo.
+
+Hay que recordar que aunque estas son recomendaciones generales, la experiencia personal juega un papel importante en la elección del equipo adecuado para el caso específico de cada quien
+
+<p>
+
+**Armar PC (para compilar Kernel Linux)**
+
+<P>
+Para que una computadora pueda compilar el Kernel de Linux es necesario que cumpla con los siguientes requisitos mínimos:
+
+-  Procesador de 64 bits (x86-64 o AMD64)
+-  Al menos 8 GB de RAM
+-  Disco duro SSD con al menos 10 GB de espacio libre
+-  Sistema operativo Linux instalado
+
+También existen recomendaciones alternativas como:
+
+-  Procesador de alto rendimiento (Core i7 o superior)
+-  Más RAM (16 GB o más)
+-  Disco duro SSD rápido
+-  Sistemas operativos modernos como Ubuntu o Fedora
+
+Es importante tener en cuenta que existen muchas distribuciones de Linux, y cada una puede tener componentes adicionales o personalizaciones específicas. Por lo tanto, los componentes mencionados anteriormente son los principales y más comunes en los sistemas operativos Linux con Kernel Linux, pero no los únicos.
+
+En este caso, los componentes a utilizar para armar el computador serán: un procesador, una placa base, una memoria RAM, un disco duro de almacenamiento, una tarjeta gráfica y una fuente de alimentación.
+
 <p>
 
 ## 
