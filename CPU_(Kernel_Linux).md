@@ -7,7 +7,9 @@
 **PROPUESTA DE COMO ARMAR UNA PC CON KERNEL LINUX.**
 ##
 
-<P>El Kernel Linux representa el núcleo los sistemas operativos (SO) Linux y se instala como software en la computadora. Es la parte de software más importante de cualquier sistema operativo ya que su principal función es encargarse de controlar todas las funciones principales del hardware del ordenador; es decir, permite a todo el software tener acceso al hardware. Por esto mismo, es responsable de la comunicación y gestión de recursos entre el hardware de la computadora y los procesos del sistema.
+<P>**Kernel Linux**
+  
+El Kernel Linux representa el núcleo los sistemas operativos (SO) Linux y se instala como software en la computadora. Es la parte de software más importante de cualquier sistema operativo ya que su principal función es encargarse de controlar todas las funciones principales del hardware del ordenador; es decir, permite a todo el software tener acceso al hardware. Por esto mismo, es responsable de la comunicación y gestión de recursos entre el hardware de la computadora y los procesos del sistema.
 
 Muchas veces surgen dudas acerca de la necesidad de compilar el Kernel cuando se libera una nueva versión: no hay que dudar, solamente se compila una nueva versión de Kernel cuando se tiene dispositivos de hardware muy recientes y forzosamente se tiene que migrar hacia una versión que incluya módulos para el soporte de este.
 
