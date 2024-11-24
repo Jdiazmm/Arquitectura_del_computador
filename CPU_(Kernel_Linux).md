@@ -8,8 +8,6 @@
 
 ##
 
-##
-
 **KERNEL LINUX**
 
 <P>  
