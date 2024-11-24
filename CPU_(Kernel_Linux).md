@@ -8,7 +8,7 @@
 
 ##
 
-**KERNEL LINUX**
+**1) KERNEL LINUX.**
 
 <P>  
 El Kernel Linux representa el núcleo los sistemas operativos (SO) Linux y se instala como software en la computadora. Es la parte de software más importante de cualquier sistema operativo ya que su principal función es encargarse de controlar todas las funciones principales del hardware del ordenador; es decir, permite a todo el software tener acceso al hardware. Por esto mismo, es responsable de la comunicación y gestión de recursos entre el hardware de la computadora y los procesos del sistema.
@@ -20,7 +20,7 @@ Por ejemplo, para desbloquear un teléfono utilizando un escáner de huella digi
 
 ##
 
-**COMPILACIÓN DE KERNEL LINUX**
+**2) COMPILACIÓN DE KERNEL LINUX.**
 
 <P>
 Existen muchas maneras de compilar el Kernel (casi una por cada distribución). Esto implica que hay que estar informado sobre la versión que se pretenda usar (ya sea Red Hat, Debian, Slackware, etc) pues es probable que por algún módulo excluido o incluido sin necesidad se podrían generar conflictos e incluso podría no funcionar correctamente.
@@ -54,7 +54,7 @@ Hay que recordar que aunque estas son recomendaciones generales, la experiencia 
 
 ##
 
-**ARMAR PC (PARA COMPILAR KERNEL LINUX)**
+**3) ARMAR PC (PARA COMPILAR KERNEL LINUX).**
 
 <P>
 Para que una computadora pueda compilar el Kernel de Linux es necesario que cumpla con los siguientes requisitos mínimos:
