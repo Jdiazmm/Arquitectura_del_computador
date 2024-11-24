@@ -23,7 +23,7 @@ Por ejemplo, para desbloquear un teléfono utilizando un escáner de huella digi
 **2) COMPILACIÓN DE KERNEL LINUX.**
 
 <P>
-Existen muchas maneras de compilar el Kernel (casi una por cada distribución). Esto implica que hay que estar informado sobre la versión que se pretenda usar (ya sea Red Hat, Debian, Slackware, etc) pues es probable que por algún módulo excluido o incluido sin necesidad se podrían generar conflictos e incluso podría no funcionar correctamente.
+Existen muchas maneras de compilar el Kernel (casi una por cada distribución). Esto implica que hay que estar informado sobre la versión que se pretenda usar (ya sea Red Hat, Debian, Slackware, etc) pues es probable que por algún módulo excluido o incluido sin necesidad se podrían generar problemas e incluso podría no funcionar correctamente.
 
 De vez en cuando surgen dudas acerca de la necesidad de compilar el Kernel cuando se libera una nueva versión; sin embargo, solamente se compila una nueva versión de Kernel cuando se tienen dispositivos de hardware muy recientes y forzosamente se tiene que migrar hacia una versión que incluya módulos para el soporte de este.
 
