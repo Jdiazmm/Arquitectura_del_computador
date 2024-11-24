@@ -4,10 +4,11 @@
 - José Manuel Díaz Moreno. (CI: 25682785)
 ##
 
-**PROPUESTA DE COMO ARMAR UNA PC QUE COMPILE KERNEL LINUX.**
+##PROPUESTA DE COMO ARMAR UNA PC QUE COMPILE KERNEL LINUX.
+
 ##
 
-**Kernel Linux**
+**KERNEL LINUX**
 
 <P>  
 El Kernel Linux representa el núcleo los sistemas operativos (SO) Linux y se instala como software en la computadora. Es la parte de software más importante de cualquier sistema operativo ya que su principal función es encargarse de controlar todas las funciones principales del hardware del ordenador; es decir, permite a todo el software tener acceso al hardware. Por esto mismo, es responsable de la comunicación y gestión de recursos entre el hardware de la computadora y los procesos del sistema.
@@ -15,7 +16,7 @@ El Kernel Linux representa el núcleo los sistemas operativos (SO) Linux y se in
 Por ejemplo, para desbloquear un teléfono utilizando un escáner de huella digital, el dueño del dispositivo debe dirigir su dedo al escáner (hardware) y este le indicará al Kernel que se ha reconocido la huella. A partir de ahí, el Kernel le indicará al software que verifique si esa huella es correcta o no y, en caso de ser así, tu teléfono se iniciará.
 <p>
 
-**Compilación de Kernel Linux**
+**COMPILACIÓN DE KERNEL LINUX**
 
 <P>
 Existen muchas maneras de compilar el Kernel (casi una por cada distribución). Esto implica que hay que estar informado sobre la versión que se pretenda usar (ya sea Red Hat, Debian, Slackware, etc) pues es probable que por algún módulo excluido o incluido sin necesidad se podrían generar conflictos e incluso podría no funcionar correctamente.
@@ -45,7 +46,7 @@ Hay que recordar que aunque estas son recomendaciones generales, la experiencia 
 
 <p>
 
-**Armar PC (para compilar Kernel Linux)**
+**ARMAR PC (PARA COMPILAR KERNEL LINUX)**
 
 <P>
 Para que una computadora pueda compilar el Kernel de Linux es necesario que cumpla con los siguientes requisitos mínimos:
