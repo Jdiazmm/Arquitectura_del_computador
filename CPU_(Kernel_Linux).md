@@ -57,6 +57,7 @@ Hay que recordar que aunque estas son recomendaciones generales, la experiencia 
 **3) ARMAR PC (PARA COMPILAR KERNEL LINUX).**
 
 <P>
+  
 **Para que una computadora pueda compilar el Kernel de Linux es necesario que cumpla con los siguientes requisitos mínimos:**
 
 -  Procesador de 64 bits (x86-64 o AMD64)
