@@ -1,0 +1,321 @@
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[spanish]{babel}
+\usepackage{xcolor,colortbl}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{Informe de Práctica de Laboratorio I}
+\author{José M. Díaz M. (25.682.785) \and Sergio José Noguera (30.572.211)}
+\date{08 de julio de 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{¿Cómo se implementa la recursividad en MIPS32? ¿Qué papel cumple la pila ($sp)?}
+
+\quad
+
+{La recursividad consiste en que una función que se llame a si misma, para resolver un problema subdividiéndolo en problemas mas pequeños, estas cuentan con su caso base y su caso recursivo, esto mismo es aplicable en las llamadas a funciones de MIPS 32 gracias al uso de las pilas o stacks, las características que debe tener una llamada recursiva para implementarla son las siguientes:}
+
+\quad
+
+\textbf{•   } \underline{Caso Base y Caso Recursivo:} { Toda función recursiva debe tener un caso base (condición de parada) que realiza los cálculos necesarios, coloca el resultado en el registro de valor de retorno (\$v0) para saltar directamente al fin de la función para limpiar la pila y retornar. La función también debe de contar con un caso recursivo que llama a la función nuevamente con parámetros diferentes que permitan acercarse al caso base, igualmente utiliza los valores de retorno (\$v0) junto con el registro \$ra (la dirección de retorno) que le permite volver a la función actual.}
+
+\quad
+
+\textbf{•   } \underline{La pila:}{ esta es la estructura que cumple la función de guardar a través de la instrucción sw, los posibles registros \$a0-\$a3 (para argumentos), \$v0-\$v1 (para valores de retorno), \$s0-\$s7 (registros salvados), punteros de pila (\$sp) y las más importante, \$ra (la dirección de retorno) que permite que la función regrese correctamente a su llamador original.}
+
+\quad
+
+\textbf{•   } \underline{Epilogo o final de la función:}{ Carga los valores originales de los registros que se guardaron en la pila utilizando la instrucción lw y finaliza la función con \$ra para ir a la función o algoritmo que lo llamo en primera instancia.}
+
+\quad
+\newpage
+
+
+\section{¿Qué riesgos de desbordamiento existen? ¿Cómo mitigarlos?}
+
+\quad
+
+\textbf{•   } \underline{Recursividad infinita:} { Es cuando una función recursiva nunca termina debido a que nunca alcanza el caso base para terminar o la profundidad de la recursión excede el de la pila, esto provoca que se agote la memoria de la pila asignada generando un error de segmento y posiblemente se cuelgue el programa.}
+
+\quad
+
+\textbf{•   } \underline{Grandes marcos de pila:}{ Es cuando se agregan demasiadas variables, ya sea en la pila o en la función recursiva; en general, esto provoca que, en unas cuantas bajas profundidades de recursión, se desborde la pila provocando que se agote la memoria de la pila asignada, lo cual conllevaría a que se genere un error de segmento y posiblemente se cuelgue el programa.}
+
+\quad
+
+\textbf{•   } \underline{Desbordamiento de buffer en la pila:}{ Es una vulnerabilidad de seguridad que ocurre cuando se escriben más datos en una zona de memoria reservada para la pila de lo que esta puede contener. Este tipo de vulnerabilidad es especialmente peligrosa porque puede provocar que los datos excedentes ternimen sobreescribiendo otras partes del marco de pila, incluyendo la dirección de retorno.}
+
+\quad
+\newpage
+
+\section{¿Qué diferencias encontraste entre una implementación iterativa y una recursiva en cuanto al uso de memoria y registros?}
+
+\quad
+
+\textbf{FUNCIONES ITERATIVAS}
+
+\quad
+
+\textit{\underline{Diferencias en memoria: }}
+
+\quad
+
+\textbf{•   } { Las pilas en las funciones iterativas usan una cantidad de memoria constante o pequeña, independientemente del número de iteraciones.}
+
+\quad
+
+\textbf{•   } { Solo tienen un marco de pila para cada función y las variables temporales o argumentos actualizan sus cambios con cada iteración. Estas funciones se actualizan en los mismos registros o en las mismas posiciones de memoria dentro del único marco de pila.}
+
+
+\quad
+
+\textit{\underline{Diferencias en registros: }}
+
+
+\quad
+
+\textbf{•   } { Los registros como t0-\$t9, \$s0-\$s7 se utilizan para almacenar contadores de bucle, valores intermedios y variables locales que siempre se reutilizarán en cada iteración. Estos valores no se sobrescriben, por lo que no es necesario guardar o restaurar sus valores.}
+
+\quad
+
+\textbf{•   } { Los registros \$a0-\$a3 y Retorno \$v0-\$v1 se usan en la primera y en ultima iteración; al igual que los registros temporales, no hay llamadas repetidas que sobrescriban y necesiten guardar estos registros en la pila.}
+
+\quad
+
+\textbf{•   } { El registro \$ra se guarda una sola vez en la pila y se restaura una vez al final.}
+
+\quad
+
+\textbf{•   } { El Puntero de Pila \$sp solo se ajusta una vez al inicio para el marco de pila de la función y una vez al final.}
+
+
+\quad
+
+\textbf{FUNCIONES RECURSIVAS}
+
+\quad
+
+\textit{\underline{Diferencias en memoria: }}
+
+\quad
+
+\textbf{•   } { Las pilas en las funciones iterativas usan una gran cantidad de memoria, debido a que cada llamada recursiva crea un nuevo marco de pila. La cantidad de memoria de pila utilizada es directamente proporcional a la profundidad de la recursión.}
+
+\quad
+
+\textit{\underline{Diferencias en registros: }}
+
+\quad
+
+\textbf{•   } { Los registros \$t0-\$t9 y \$s0-\$s7 mantienen valores importantes que deben preservarse durante las llamadas recursivas. Cuando una función es recursiva, estos registros pueden ser modificados durante su ejecución, por lo que es crucial garantizar que recuperen sus valores originales tanto al inicio como al final de cada llamada recursiva. Para lograr esto, se implementa un mecanismo específico: en el prólogo de la función se utilizan instrucciones sw para guardar los valores de los registros temporales (\$t), mientras que en el epílogo se emplean instrucciones lw para restaurarlos, asegurando así la integridad de los datos durante toda la ejecución de la función recursiva.}
+
+\quad
+
+\textbf{•   } { Los registros \$a0-\$a3 y Retorno \$v0-\$v1 a lo largo de las llamadas repetidas se sobrescribirán y necesitarán guardarse en la pila antes de la llamada y restaurarse después.}
+
+\quad
+
+\textbf{•   } { El registro \$ra debe ser guardado en la pila antes de cada llamada recursiva.}
+
+\quad
+
+\textbf{•   } { El Puntero de Pila \$sp se ajusta en cada llamada para asignar un espacio para el nuevo marco de pila y se ajustará de nuevo al final para liberar ese espacio.}
+
+\quad
+\newpage
+
+\section{¿Qué diferencias encontraste entre los ejemplos académicos del libro y un ejercicio completo y operativo en MIPS32?}
+
+\quad
+
+\begin{tabular}{| p{3cm} |p{4cm} | p{5cm} |}
+    \hline
+    ASPECTO DIFERENCIAL & EJEMPLOS DEL LIBRO & EJERCICIO COMPLETO \\
+    \hline
+    Objetivo Principal & Los ejemplos del libro se encargan de enseñar conceptos específicos de MIPS 32 para enteder los pasos e instrucciones de esta arquitectura & Un ejercicio completo debe ser capaz de desarrollar y mostrar un programa mucho mas íntegro y funcional, y debe cumplir con el trabajo complejo para el que fué creado.
+\\
+    \hline
+    Complejidad & Los ejemplos del libro muestran fragmentos simples y focalizados & Un  ejercicio completo puede ser sinónimo de programas integrales con múltiples componentes \\
+    \hline
+    Contexto &  Los ejemplos del libro se muestran aislados y controlados & Un  ejercicio completo puede estar integrado con otros sistemas y rutinas \\
+    \hline
+    Manejo de Errores & Los ejemplos del libro tienen un manejo de errrores limitado o simplificado & Un  ejercicio completo puede tener un un manejo de errrores implementado completamente \\
+    \hline
+    Optimización & Para los ejemplos del libro, esto es algo secundario, ya que lo que se busca no es un programa con buen rendimiento, sino uno que ayude al entendimiento	 & Para un ejercicio completo, esto es importante, ya que un buen rendimiento ayuda a que el programa realice mejor su trabajo \\
+    \hline
+    Documentación & Los ejemplos del libro tienen una documentación mínima, enfocada en conceptos & Un ejemplo completo puede tener una documentación más completa y profesional
+ \\
+    \hline
+    Pruebas & Los ejemplos del libro se pueden usar para casos básicos & Un ejemplo completo puede usarse para una suite completa de pruebas
+ \\
+    \hline
+    Interacción & Los ejemplos del libro pueden interactuar con componentes específicos & Un ejemplo completo puede interactuar con múltiples partes del sistema
+ \\
+    \hline
+\end{tabular}
+
+\quad
+\newpage
+
+\section{Elaborar un tutorial de la ejecución paso a paso en MARS.}
+
+\quad
+
+\textbf{\underline{Configuración Inicial}}
+
+\quad
+
+\textbf{1 -  } { Abrir MARS en la computadora}
+
+\quad
+
+\textbf{2 -  } { Configurar la ventana principal}
+
+\quad
+
+\textbf{    •} { Hay que asegurarse de tener visible el editor de texto.}
+
+
+\textbf{    •} { Verificar que las ventanas de registro estén accesibles.}
+
+
+\textbf{    •} { Confirmar que el panel de registros esté visible.}
+
+\quad
+
+
+\textbf{\underline{Pasos detallados de ejecución}}
+
+\quad
+
+\textbf{1 -  } { Creación del programa}
+
+\quad
+
+\textbf{    •} { Hacer clic en ``File``,  seguido de ``New`` o presionar Ctrl+N.}
+
+\textbf{    •} { Escribir el código MIPS en el editor.}
+
+\textbf{    •} { Guardar el archivo con extensión .asm.}
+
+\quad
+
+\textbf{2 -  } { Compilación}
+
+\quad
+
+\textbf{    •} { Presionar F3 o hacer clic en el botón ``Assemble``.}
+
+\textbf{    •} { Revisar la ventana de mensajes para detectar errores.}
+
+\textbf{    •} { Si hay errores, hay que correfirlos y volver a compilar.}
+
+\quad
+
+\textbf{3 -  } { Preparación para la ejecución}
+
+\quad
+
+\textbf{    •} { Colocar el cursor en la primera línea de código que se desea ejecutar.}
+
+\textbf{    •} { Establecer breakpoints si se necesita (F5).}
+
+\textbf{    •} { Preparar cualquier dato de entrada necesario.}
+
+\quad
+
+\textbf{4 -  } { Ejecución del Programa}
+
+\quad
+
+\textbf{    •} { Usar F5 para ejecutar todo el programa.}
+
+\textbf{    •} { Otra opción es usar F7 para ejecutar paso a paso.}
+
+\textbf{    •} { Observar los cambios en: Registros, Memoria y Pila.}
+
+\quad
+
+\textbf{\underline{Depuración}}
+
+\quad
+
+\textbf{1 -  } { Durante la ejecución}
+
+\quad
+
+\textbf{    •} { Hay que monitorear los valores de los registros.}
+
+\textbf{    •} { Hay que verificar los cambios en la memoria.}
+
+\textbf{    •} { Hay que usar los breakpoints estratégicamente.}
+
+\quad
+
+\textbf{2 -  } { Al encontrar errores}
+
+\quad
+
+\textbf{    •} { Identificar dónde se produjo el error.}
+
+\textbf{    •} { Reviar los valores de los registros.}
+
+\textbf{    •} { Corregir el código y volver a compilar.}
+
+\quad
+\newpage
+
+
+\section{Justificar la elección del enfoque (iterativo o recursivo) según eficiencia y claridad en MIPS.}
+
+
+\quad
+
+\textbf{\underline{Usar Enfoque Iterativo cuando:}}
+
+\quad
+
+\textbf{    •} { Se trabaja con grandes conjuntos de datos.}
+
+\textbf{    •} { La memoria es un recurso limitado.}
+
+\textbf{    •} { Se requiere máxima eficiencia en el tiempo de ejecución.}
+
+\textbf{    •} { El problema tiene una naturaleza secuencial clara.}
+
+\quad
+
+\textbf{\underline{Usar Enfoque Recursivo cuando:}}
+
+
+\quad
+
+\textbf{    •} { El problema tiene una estructura jerárquica natural.}
+
+\textbf{    •} { La claridad del código es prioritaria sobre el rendimiento.}
+
+\textbf{    •} { Se trabaja con estructuras de árbol o grafo.}
+
+\textbf{    •} { La profundidad máxima de recursión es conocida y manejable.}
+
+\quad
+
+{En MIPS 32, el enfoque iterativo suele ser la opción más segura y eficiente para la mayoría de los casos, especialmente cuando se trabaja con conjuntos de datos grandes o se requiere optimización de rendimiento. Sin embargo, para problemas que tienen una estructura naturalmente recursiva (como árboles binarios o expresiones matemáticas), el enfoque recursivo puede proporcionar un código más claro y mantenible, siempre y cuando se controle cuidadosamente la profundidad de recursión.}
+
+
+\quad
+\newpage
+
+\section{Análisis y Discusión de los Resultados}
+
+\quad
+
+{La recursividad en MIPS32 permite funciones auto-referenciales apoyadas en pilas, pero conlleva riesgos de desbordamiento y diferentes costos de memoria comparado con implementaciones iterativas. Elegir entre ambos enfoques depende de la estructura del problema y la eficiencia requerida.}
+
+
+\end{document}
