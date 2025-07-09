@@ -1,0 +1,267 @@
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Formulas del Computador}
+\author{José M. Díaz M. (25682785)}
+\date{19 de junio de 2025}
+
+\begin{document}
+
+\maketitle
+
+\textbf{Formula No. 1: Productividad y tiempo de respuesta}
+
+\quad
+
+\textit{Para maximizar las prestaciones, se debe minimizar el tiempo de respuesta, o tiempo de ejecución, de alguna tarea. Por lo tanto, las prestaciones y el tiempo de ejecución de un computador X deben relacionarse de la siguiente manera:}
+
+\quad
+
+\ Prestaciones_x = \[ \frac{1}{Tiempo\ de\ ejecución_x}\]
+
+\quad
+
+\textit{Así, si las prestaciones de una máquina X son mayores que las prestaciones de una maquina Y,}
+\textit{se tiene:}
+
+\[{Prestaciones_x} > {Prestaciones_y}\]
+
+\[\frac{1}{Tiempo\ de\ Ejecución_x} > \frac{1}{Tiempo\ de\ Ejecución_y}\]
+
+\[{Tiempo\ de\ Ejecución_y} > {Tiempo\ de\ Ejecución_x}\]
+
+\quad
+
+\textit{Esto significa que el tiempo de ejecución de Y es mayor que el de X; es decir, X es más rápido que Y.}
+
+\quad
+
+\textit{Para relacionar las prestaciones de dos máquinas diferentes, se usa la frase “X es n veces más rápida que Y”, la cual indica:}
+
+\[\frac{Prestaciones_x}{Prestaciones_y} = n\]
+
+\quad
+
+\textbf{1.1.- Prestaciones Relativas:} {Si X es n veces más rápida que Y, entonces el tiempo de ejecución de Y es n veces mayor que el de X:}
+
+\quad
+
+\[\frac{Prestaciones_x}{Prestaciones_y} = \frac{Tiempo\ de\ Ejecución_y}{Tiempo\ de\ Ejecución_x} = n\] \\
+
+
+\textbf{Formula No. 2: Medición de las prestaciones.}
+
+\quad
+
+\textit{El tiempo es la medida de las prestaciones de un computador: el computador que ejecuta la misma cantidad de trabajo en el menor tiempo es el más rápido. El tiempo de ejecución de un programa se mide en segundos.}
+
+\quad
+
+\textbf{2.1.- Prestaciones de la CPU y sus factores}
+
+\quad 
+
+\textit{Una fórmula sencilla que relaciona las métricas más básicas (ciclos de reloj y tiempo del ciclo de reloj) con el tiempo de CPU es la siguiente:}
+
+\[\binom{Tiempo\ de\ ejecución\ de}{CPU\ para\ un\ programa}= \binom{Ciclo\ de\ reloj\ de\ la}{CPU\ para\ el\ programa}\ x\ \binom{Tiempo\ del}{ciclo\ del\ reloj}\]
+
+\quad
+
+\textit{Alternativamente, ya que la frecuencia de reloj es la inversa del tiempo de ciclo, se tiene que:}
+
+\[\binom{Tiempo\ de\ ejecución\ de}{CPU\ para\ un\ programa}= \frac{Ciclo\ de\ reloj\ de\ la\ CPU\ para\ el\ programa}{Frecuencia\ del\ reloj}\]
+
+\quad
+
+\textit{Esta fórmula indica que se puede mejorar las prestaciones reduciendo la longitud del ciclo de reloj o el número de ciclos de reloj requeridos por un programa.}
+
+\quad
+
+\textbf{Formula No. 3: Prestaciones de las instrucciones.}
+
+\quad
+
+\textbf{3.1.- Instrucciones que forman un programa:}{ Como el compilador genera instrucciones que se deben ejecutar, la máquina procede a ejecutarlas para que el programa funcione. El tiempo de ejecución de un programa depende del número de instrucciones que tenga. }
+
+\quad
+
+\textit{Una manera de pensar en el tiempo de ejecución es que éste es igual al número de instrucciones ejecutadas multiplicado por el tiempo medio por instrucción. Por lo tanto, el número de ciclos de reloj requerido por un programa puede ser representado como:}
+
+\[\binom{Ciclos\ de}{Reloj\ del\ CPU}= \binom{Instrucciones\ de}{un\ Programa}\ x\ \binom{Media\ de\ Ciclos}{por\ Instrucción}\]
+
+\quad
+
+\textbf{3.2.- Ciclos de reloj por instrucción (CPI):}{ Número medio de ciclos de reloj por instrucción para un programa o fragmento de programa.}
+
+\quad
+
+\textit{El CPI es una media de todas las instrucciones ejecutadas por el programa, y proporciona una manera de comparar dos realizaciones diferentes de la misma arquitectura del repertorio de instrucciones, ya que el número de instrucciones (o número total de instrucciones) requeridas por un programa será, obviamente, el mismo.}
+
+\quad
+
+\textbf{Fórmula No. 4: La Ecuación Clásica de las Prestaciones de la CPU.}
+
+\quad
+
+\textit{La ecuación básica de las prestaciones en términos del número de instrucciones (número de instrucciones ejecutadas por el programa), del CPI y del tiempo de ciclo, es la siguiente:}
+
+\[\binom{Tiempo\ de}{ejecución}= \binom{Número\ de}{instrucciones}\ x\ CPI\ x\ \binom{Tiempo}{del\ ciclo}\]
+
+\quad
+
+\textit{O bien, dado que la frecuencia es el inverso del tiempo de ciclo, se tiene:}
+
+\[\binom{Tiempo\ de}{ejecución}= \frac{Número\ de\ Instrucciones\ x\ CPI}{Frecuencia\ de\ Reloj}\]
+
+\quad
+
+\textbf{4.1.- Tiempo de ejecución medido en segundos:}
+
+\quad
+
+\ Tiempo = \cfrac{Segundos}{Programa}\ =\ \cfrac{Instrucciones}{programa}\ x\cfrac{Ciclos\ de\ reloj}{Instrucción}\ x\ \cfrac{Segundos}{Ciclos\ de\ reloj}} \\
+
+\quad
+
+\textbf{Fórmula No. 5: El Muro de la Potencia}
+
+\quad
+
+\textit{La disipación de potencia dinámica depende de la carga capacitiva de cada transistor, del voltaje aplicado y de la frecuencia de conmutación del transistor:}
+
+\quad
+
+\textit{Potencia = Carga Capacitiva\ x\ Voltaje^2\ x\ \text{Frecuencia de Computación}}
+
+\quad
+
+\textbf{Fórmula No. 6: El Coste de un Circuito}
+
+\quad
+
+\textit{El coste de un circuito integrado se puede expresar con tres ecuaciones
+simples:}
+
+\quad
+
+\textbf{6.1.- Coste por dado:}
+
+\[\binom{\textit{Coste}}{\textit{por\ dado}} = \[\frac{\textit{Coste\ por\ oblea}}{\textit{Dado\ por\ oblea}\ x\ \textit{Factor\ de\ producción}}\]
+
+\quad
+
+\textbf{6.2.- Dados por oblea:}
+
+\[\binom{\textit{Dados}}{\textit{por\ oblea}} = \[\frac{\textit{Area\ de\ la\ Oblea}}{\textit{Area\ del\ dado}}\]
+
+\quad
+
+\textbf{6.3.- Factor de producción:}
+
+\[\binom{\textit{Factor}}{\textit{de\ producción}} = \[\frac{1}{Z +  Z\textit{Defectos\ por\ área}\  x\ \textit{Area\ del\ dado} / 2 Z^2}\]
+
+\quad
+
+\textit{La primera ecuación se obtiene de forma directa y sencilla. La segunda es una
+aproximación, puesto que no resta el área del borde de la oblea circular que no puede aprovecharse para dados. La última ecuación se basa en observaciones empíricas del factor de producción en fábricas de circuitos integrados, y el exponente está relacionado con el número de pasos críticos del proceso de fabricación.}
+
+\quad
+
+\textbf{6.4.- Conceptos importantes:}
+
+\quad
+
+\textbf{Silicio:}{ elemento natural que es semiconductor.}
+
+\quad
+
+\textbf{Semiconductor:}{ sustancia que no conduce bien la electricidad.}
+
+\quad
+
+\textbf{Lingote de cristal de silicio:}{ barra compuesta de cristal de silicio que tiene entre 15 y 30 cm de diámetro y entre 30 y 60 cm de longitud.}
+
+\quad
+
+\textbf{Oblea: }{ rebanada de un lingote de silicio, de grosor no mayor que 0.25 cm, que se usa para fabricar chips.}
+
+\quad
+
+\textbf{Defecto:}{ imperfección microscópica en una oblea o en uno de los pasos de estampación que provoca que falle el dado que lo contiene.}
+
+\quad
+
+\textbf{Dado:}{ sección rectangular individual que se corta de una oblea, más informalmente conocido como chip.}
+
+\quad
+
+\textbf{Factor de producción:}{ porcentaje de dados correctos del total de dados de la oblea.}
+
+\quad
+
+\textbf{Fórmula No. 7: Evaluación de la CPU con Programas de Prueba SPEC}
+
+\quad
+
+\textbf{7.1.- La Media Geométrica:}
+
+\[n\ \sqrt{\displaystyle \prod_{i=1}^{n}{Relaciones\ de\ tiempo\ de\ ejecución_{i}\]}
+
+\[\prod_{i=1}^{n}{a_i\ significa\ el\ producto\ a_1, a_2, ..., a_n\]}\\
+
+\quad
+
+\textbf{Fórmula No. 8: Evaluación de la Potencia con Programas de Prueba SPEC}
+
+\quad
+
+\textit{ssj\ -\  ops\ global\ por\ vatio}= (\sum_{i=0}^{10}{ssj\ - ops_i\]) / (\sum_{i=0}^{10}{potencia_i\])}\\
+
+\quad
+
+\textbf{Fórmula No. 9: Falacias y errores habituales.}
+
+\quad
+
+\textbf{Error: Esperar que la determinada mejora de un computador incremente las prestaciones globales en una cantidad proporcional a dicha mejora.}
+
+\quad
+
+\textbf{9.1.- Ley de Amdahl:}
+
+\quad
+
+\textit{El tiempo de ejecución del programa después de hacer las mejoras viene dado por la siguiente ecuación simple, conocida como ley de Amdahl:}
+
+\[\binom{\textit{Tiempo\ de\ Ejecución}}{\textit{despues\ de\ las\ Mejoras}} = \[\frac{\textit{Tiempo\ de\ ejecución\ por\ la\ mejora}}{\textit{Cantidad\ de\ mejora}}\ +\ \binom{\textit{Tiempo de Ejecución}}{\textit{no afectado}}\]
+
+\quad
+
+\textbf{Ley de Amdahl:}{ Regla que establece que el aumento posible de las prestaciones, con una determinada mejora, está limitado por la cantidad de veces en que se usa dicha mejora. Esta es una versión cuantitativa de la ley de rendimiento decreciente en economía.}
+
+\quad
+
+\textbf{Error: Usar un subconjunto de las ecuaciones de prestaciones como una métrica de las prestaciones.}
+
+\quad
+
+\textbf{9.2.-  MIPS (Millones de Instrucciones por Segundo):}{ Medida de la velocidad de ejecución de un programa, basada en el número de instrucciones. MIPS está definido como el número de instrucciones dividido por el producto del tiempo de ejecución por 10^6.}
+
+\quad
+
+\ MIPS = \cfrac{Número\ de\ instrucciones}{Tiempo\ de\ ejecución\ x\ 10^6}\\
+
+\quad
+
+\textbf{9.3.-  MIPS con Frecuencia de Reloj y CPI: }
+
+\quad
+
+\ MIPS = \cfrac{Número\ de\ instrucciones}{{\cfrac{Número\ de\ instrucciones\ x\ CPI}{Frecuencia\ de\ reloj}}\  x\ 10^6 }\ =\ \cfrac{Frecuencia\ de\ reloj}{CPI\ x\ 10^6}
+
+\quad
+
+
+\end{document}

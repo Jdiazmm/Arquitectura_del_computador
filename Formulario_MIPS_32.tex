@@ -1,0 +1,177 @@
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[spanish]{babel}
+\usepackage{xcolor,colortbl}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\definecolor{Gray}{gray}{0.85}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+
+\title{Formulario MIPS 32}
+\author{José M. Díaz M. (25682785)}
+\date{05 de Junio de 2025}
+
+\begin{document}
+
+\maketitle
+
+\textbf{Conjunto de instrucciones MIPS 32}
+
+\quad
+
+\begin{tabular}{| c | c | c | c |}
+    \hline
+    \rowcolor{Gray}
+    \multicolumn{4}{ |c| }{Categoría Aritmética} \\ 
+    \hline
+    \rowcolor{LightCyan}
+    Nombre & Instrucción & Formato & operación \\ 
+    \hline
+    Suma & add \$s1,\$s2,\$s3  & R & \$s1 = \$s2 + \$s3 \\
+    \hline
+    Resta & sub \$s1,\$s2,\$s3  & R & \$s1 = \$s2 - \$s3 \\
+    \hline
+    Suma inmediata (constantes) & addi \$s1,\$s2,100  & I & \$s1 = \$s2 - 100 \\
+    \hline     
+\end{tabular}
+
+\quad
+\newline
+    
+\begin{tabular}{| c | c | c | c |}
+    \hline
+    \rowcolor{Gray}
+    \multicolumn{4}{ |c| }{Categoría de Transferencia de dato} \\ 
+    \hline
+    \rowcolor{LightCyan}
+    Nombre & Instrucción & Formato & operación \\ 
+    \hline
+    Cargar una palabra & lw \$s1,100(\$s2) & I & \$s1 = Memory[\$s2 + 100] \\
+    \hline
+    Almacenar palabra & sw \$s1,100(\$s2) & I & Memory[\$s2 + 100] = \$1 \\
+    \hline
+    Cargar media palabra & lh \$s1,100(\$s2)  & I & \$s1 = Memory[\$s2 + 100] \\
+    \hline
+    Almacenar media palabra & sh \$s1,100(\$s2)  & I & Memory[\$s2 + 100] = \$1 \\
+    \hline
+    Cargar un byte & lb \$s1,100(\$s2) & I & \$s1 = Memory[\$s2 + 100] \\
+    \hline
+    Almacenar un byte & sb \$s1,100(\$s2)  & I & Memory[\$s2 + 100] = \$1 \\
+    \hline
+    Carga superior inm. (const.) & lui \$s1,100 & I & \$s1 = 100 * 2^{16} \\
+    \hline
+\end{tabular}
+
+\quad
+\newline
+
+\begin{tabular}{| c | c | c | c |}
+    \hline
+    \rowcolor{Gray}
+    \multicolumn{4}{ |c| }{Categoría Lógica} \\ 
+    \hline
+    \rowcolor{LightCyan}
+    Nombre & Instrucción & Formato & operación \\ 
+    \hline
+    And & and \$s1,\$s2,\$s3 & R & \$s1 = \$s2 \wedge\ \$s3 \\
+    \hline
+    Or & or \$s1,\$s2,\$s3 & R & \$s1 = \$s2 \vee\ \$s3 \\
+    \hline
+    Nor & nor \$s1,\$s2,\$s3 & R & \$s1 = \neg(\$s2 \vee\ \$s3)} \\
+    \hline
+    And inmediato (const.) & andi \$s1,\$s2,100 & I & \$s1 = \$s2 \wedge\ 100 \\
+    \hline
+    Or inmediato (const.) & ori \$s1,\$s2,100 & I & \$s1 = \$s2 \vee\ 100 \\
+    \hline
+    Desplazamiento lógico a la izq. & sll \$s1,\$s2,10 & R & \$s1 = \$s2 \ll 10 \\
+    \hline
+    Desplazamiento lógico a la der. & srl \$s1,\$s2,10 & R & \$s1 = \$s2 \gg 10 \\
+    \hline
+\end{tabular}
+
+\quad
+\newline
+
+\begin{tabular}{| c | c | c | p{4cm} |}
+    \hline
+    \rowcolor{Gray}
+    \multicolumn{4}{ |c| }{Categoría de Salto condicional} \\ 
+    \hline
+    \rowcolor{LightCyan}
+    Nombre & Instrucción & Formato & operación \\ 
+    \hline
+    Salto si igual & beq \$s1,\$s2, L  & I & if (\$s1 == \$s2) go to L (PC + 4 + 100) \\
+    \hline
+    Salto si distinto & bne \$s1,\$s2, L  & I & if (\$s1 != \$s2) go to L  (PC + 4 + 100) \\
+    \hline
+    Fijar si menor que & slt \$s1,\$s2,\$s3 & R & if (\$s2 \textless\ \$s3) then \$s1=1; else \$s1 = 0 \\
+    \hline
+    Fijar si menor que inm. (const.) & slti \$s1,\$s2,100 & I & if (\$s2 \textless\ 100) then \$s1=1; else \$s1 = 0 \\
+    \hline
+\end{tabular}
+
+\quad
+\newline
+
+\begin{tabular}{| c | c | c | c |}
+    \hline
+    \rowcolor{Gray}
+    \multicolumn{4}{ |c| }{Categoría de Salto incondicional} \\ 
+    \hline
+    \rowcolor{LightCyan}
+    Nombre & Instrucción & Formato & operación \\ 
+    \hline
+    Salto incondicional & j 2500  & J & go to 10000 \\
+    \hline
+    Salto con registro & jr \$ra  & R & go to \$ra \\
+    \hline
+    Saltar y enlazar & jal 2500 & J & \$ra = PC + 4; go to 10000 \\
+    \hline     
+\end{tabular}
+
+\quad
+\newline
+\newline
+
+\textbf{Registros en  MIPS}
+
+
+\begin{tabular}{| p{1cm} | c | p{4cm} | p{2cm} |}
+    \hline
+    \rowcolor{Gray}
+    \multicolumn{4}{ |c| }{Registros} \\ 
+    \hline
+    \rowcolor{LightCyan}
+    Número & Nombre & Descripción & ¿Preservado? \\ 
+    \hline
+    0 & \$zero & Constante valor cero & No aplicable \\
+    \hline
+    1 & \$at & Temporal reservado para el ensamblador. Usado al traducir las
+pseudoinstrucciones. & No \\
+    \hline
+    2-3 & \$v0-\$v1 & Valores resultantes de funciones y evaluación de expresiones & No \\
+    \hline
+    4-7 & \$a0-\$a3 & Argumentos para subrutinas. No se preservan a través de llamadas a subrutinas. & No \\
+    \hline
+    8-15 & \$t0-\$t7 & Temporales. No se preservan a través de llamadas de subrutinas, por lo que la rutina que llama debe salvarlos si los quiere conservar. & No \\
+    \hline
+    16-23 & \$s0-\$s7 & Valores salvados. Una subrutina que trabaje con ellos debe salvarlos (almacenarlos) antes de que los registros los usen, y restaurarlos al salir. & Si \\
+    \hline
+    24-25 & \$t8-\$t9 & Continuación a los \$t0-t7. Temporales. No se preservan a través de llamadas de subrutinas, por lo que la rutina que llama debe salvarlos si los quiere conservar & No \\
+    \hline
+    26-27 & \$k0-\$k1 & Reservados para el kernel (núcleo del sistema operativo) & No \\
+    \hline
+    28 & \$gp & Puntero global. Apunta al medio del bloque de 64K en el segmento de datos estáticos & Si \\
+    \hline
+    29 & \$sp & Puntero de pila (stack pointer). No se actualiza automáticamente. & Si \\
+    \hline
+    30 & \$fp & Valor salvado. Puntero de marco. Se preserva a través de llamadas. Permite acceder de modo indexado a los elementos de la pila. & Si \\
+    \hline
+    31 & \$ra & Dirección de retorno (return address). & Si \\
+    \hline
+\end{tabular}
+
+
+\end{document}
