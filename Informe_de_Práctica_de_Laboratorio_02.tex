@@ -1,0 +1,905 @@
+
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[spanish]{babel}
+\usepackage{xcolor,colortbl}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{Informe de Práctica de Laboratorio II}
+\author{José M. Díaz M. (25.682.785) \and Sergio José Noguera (30.572.211)}
+\date{15 de julio de 2025}
+
+\begin{document}
+
+\maketitle
+
+
+
+
+
+
+\section{¿Qué diferencias existen entre registros temporales (\$t0–\$t9) y registros guardados (\$s0–\$s7) y cómo se aplicó esta distinción en la práctica?}
+
+\quad
+
+\textbf{Diferencias }
+
+\quad
+
+\textbf{•   } \underline{ Los registros temporales (\$t0-\$t9):} { Se utilizan para valores intermedios en funciones, es decir dan resultados que ayudan a calcular los resultados finales y pueden ser sobrescritos de ser necesario ya que nos tan relevantes sus valores originales.}
+
+\quad
+
+\textbf{•   }  \underline{ Los registros guardados (\$s0-\$s7):} { Se utilizan para valores locales importantes o valores que no tengan que cambiar su valor en una función, es decir que sus valores deben ser constantes una vez establecidos y deben ser el mismo tanto al entrar como al salir de la función}
+
+\quad
+
+\textbf{Distinción en la práctica }
+
+\quad
+
+\textbf{•   } \underline{ Los registros temporales (\$t0-\$t9):} { Se usaron para valores despreciables, en este caso fueron útiles para los valores de los índices del arreglo de forma que se podían incrementar su valor sin afectar el funcionamiento del algoritmo, también se usaron para contadores para imprimir los arreglos ya que no importaba que se alterara su valor.}
+
+\quad
+
+\textbf{•   }  \underline{ Los registros guardados (\$s0-\$s7):} { Se usaron para cargar los valores más importantes de los algoritmos, siendo los números dentro del arreglo y el tamaño del arreglo, estos valores tenían que permanecer sin cambios a lo largo del algoritmo, también se usaron al comenzar el ordenamiento (tanto en el ordenamiento burbuja como el ordenamiento selección) para guardar los valores los valores relevantes, como los contadores.}
+
+\quad
+\newpage
+
+
+
+
+
+
+
+\section{¿Qué diferencias existen entre los registros \$a0–\$a3, \$v0–\$v1, \$ra y cómo se aplicó esta distinción en la práctica??}
+
+\quad
+
+\textbf{Diferencias }
+
+\quad
+
+\textbf{•   } \underline{ Los registros \$a0-\$a3: } {Se utilizan para guardar o cargar argumentos para ser usados en el algoritmo, sus valores no son resultados sino para declarar parámetros específicos.}
+
+\quad
+
+\textbf{•   } \underline{ Los registros \$v0-\$v1:} { Se utilizan para guardar los valores de retorno de las funciones para ser usados en otra, los valores de estos registros siempre serán únicos.}
+
+\quad
+
+\textbf{•   } \underline{ El registro \$ra:} { Se utiliza para guardar la dirección de retorno de una función previamente establecida, así al terminar la función retornara a la que lo llamo en primer lugar.}
+
+\quad
+
+\textbf{Distinción en la práctica }
+
+\quad
+
+\textbf{•   } \underline{ Los registros \$a0-\$a3: } { Se usaron para cargar las direcciones de los datos, tanto los mensajes, como los números dentro de arreglo se consideran argumentos, así que con estos son cargados para que cuando se haga una llamada al sistema estos estos listos para ser procesados y ser impresos por pantalla.}
+
+\quad
+
+\textbf{•   } \underline{ Los registros \$v0-\$v1:} { Se usaron exclusivamente para hacer llamadas al sistema; es decir, preparar el entorno para imprimir los datos requeridos.}
+
+\quad
+
+\textbf{•   } \underline{ El registro \$ra:} { Se usó únicamente para retornar a la función que llamo en primer lugar al algoritmo de ordenamiento (tanto en el ordenamiento burbuja como el ordenamiento selección) de forma que se pueda finalizar.}
+
+\quad
+\newpage
+
+
+
+
+
+
+
+
+\section{¿Cómo afecta el uso de registros frente a memoria en el rendimiento de los algoritmos de ordenamiento implementados?}
+
+\quad
+
+{ La clave del rendimiento radica en la velocidad de acceso a la memoria principal, el cual es mucho más lento que los registros ejecutados por cientos o miles de ciclos de reloj, cada vez que el procesador necesita un dato que no está en un registro, debe ir a la memoria, lo que pausa significativa en la ejecución, en este caso si los arreglos utilizados son muy grandes y no caben completamente en los caches, cada elemento que no esté en el cache implicara entrar a la memoria principal, ralentizando considerablemente el algoritmo. También la cantidad de operaciones que implican a cada registro puede afectar el rendimiento, siendo en este caso que si el arreglo está muy desordenado se tendrán que procesar muchos cambios de valores en los registros a procesar.}
+
+\quad
+\newpage
+
+
+
+
+
+
+
+
+
+
+\section{¿Qué impacto tiene el uso de estructuras de control (bucles anidados, saltos) en la eficiencia de los algoritmos en MIPS32?}
+
+\quad
+
+\textbf{Los bucles anidados: }
+
+\quad
+
+{Estos son conocidos por permitir realizar una misma tarea múltiples veces en un algoritmo siguiendo una lógica basada en $N$ (número de veces que realiza el ciclo), su impacto en la eficiencia recae en su complejidad temporal, cuando se ejecuta un bucle se dice que su complejidad temporal es $\mathcal{O}(N)$ (Número de órdenes que hará el bucle), cuando se implementan bucles anidados éste aumenta exponencialmente su complejidad llegando a $\mathcal{O}(N^2)$, $\mathcal{O}(N^3)$, $\mathcal{O}(N^4)$, y así sucesivamente afectando su eficiencia en altos niveles.}
+
+\quad
+
+\textbf{Saltos: }
+
+\quad
+
+{Estos son cocidos por permitir ir de una función a otra, su impacto en la eficiencia recae en el Costo de Cálculo de Dirección, MIPS32 se caracteriza por tener segmentación de instrucciones dividas por funciones y los saltos para llegar a las funciones, calculan su dirección de destino, que depende de su localización el algoritmo siendo que mientras más lejos se encuentre la instrucción de salto de su destino el cálculo tendrá un mayor costo y afectando significativamente la eficiencia.}
+
+\quad
+\newpage
+
+
+
+
+
+
+
+
+
+\section{¿Cuáles son las diferencias de complejidad computacional entre el algoritmo Bubble Sort y el algoritmo alternativo? ¿Qué implicaciones tiene esto para la implementación en un entorno MIPS32?}
+
+\quad
+
+{Los algoritmos Bubble Sort y Selection Sort comparten algunas características fundamentales pero también presentan importantes diferencias que afectan su comportamiento y eficiencia. He aquí una comparación detallada:}
+
+\quad
+
+\begin{tabular}{| p{4cm} |p{4cm} | p{4cm} |}
+    \hline
+    CARACTERÍSTICA & BUBBLE SORT & SELECTION SORT \\
+    \hline
+    Complejidad temporal mejor caso & $\mathcal{O}(N)$ & $\mathcal{O}(N^2)$
+\\
+    \hline
+    Complejidad temporal promedio & $\mathcal{O}(N^2)$ & $\mathcal{O}(N^2)$ \\
+    \hline
+    Complejidad temporal peor caso & $\mathcal{O}(N^2)$ & $\mathcal{O}(N^2)$ \\
+    \hline
+    Estabilidad & Estable & No estable \\
+    \hline
+    Número de intercambios & Máximo posible & Mínimo necesario \\
+    \hline
+    Optimización para datos ordenados & Se puede optimizar con bandera & No se puede optimizar
+ \\
+    \hline
+
+\end{tabular}\vspace{0.8cm}
+
+\textbf{Implicaciones para Implementación en MIPS32: }
+
+\quad
+
+{Las diferencias en complejidad tienen impactos significativos en la implementación en MIPS32:}
+
+\quad
+
+\textbf{1 -  } {\underline{Uso de Registros: }}
+
+\quad
+
+\textbf{    •} { Selection Sort requiere menos registros debido a sus operaciones más simples.}
+
+
+\textbf{    •} { Bubble Sort necesita más registros para manejar la bandera de optimización y los índices adicionales.}
+
+\quad
+
+\textbf{2 -  } {\underline{Memoria y Acceso: }}
+
+\quad
+
+\textbf{    •} { Ambos algoritmos tienen complejidad espacial $\mathcal{O}(1)$.}
+
+
+\textbf{    •} { Selection Sort realiza menos accesos a memoria por tener menos intercambios.}
+
+
+\textbf{    •} { Bubble Sort puede beneficiarse de la cache en arrays pequeños debido a su acceso secuencial.}
+
+\quad
+
+\textbf{3 -  } {\underline{Pipeline y Branch Prediction: }}
+
+\quad
+
+\textbf{    •} { Selection Sort tiene un patrón de ramificación más predecible.}
+
+
+\textbf{    •} { Bubble Sort puede beneficiarse de predicción de saltos cuando usa la optimización de bandera.}
+
+\quad
+\newpage
+
+
+
+
+
+
+
+
+
+\section{¿Cuáles son las fases del ciclo de ejecución de instrucciones en la arquitectura MIPS32 (camino de datos)? ¿En qué consisten?}
+
+\quad
+
+{ El ciclo de ejecución de instrucciones en la arquitectura MIPS32 se divide en cinco fases fundamentales que forman parte del camino de datos (datapath). Cada fase tiene una función específica y contribuye al proceso de ejecución de las instrucciones. He aquí cada una de estas fases y su función específica: }
+
+\quad
+
+\begin{tabular}{| p{4cm} |p{4cm} | p{4cm} |}
+    \hline
+    FASE & FUNCIÓN PRINCIPAL & LATENCIA TÍPICA \\
+    \hline
+    Instruction Fetch (IF) & Traer la instrucción desde memoria usando el PC actual & 200ps
+\\
+    \hline
+    Instruction Decode (ID) & Decodificar la instrucción y leer los registros fuente & 100ps \\
+    \hline
+    Execute (EX) & Realizar operaciones ALU o calcular direcciones & 200ps \\
+    \hline
+    Memory Access (MEM) & Acceder a memoria para lecturas/escrituras & 200ps \\
+    \hline
+    Write Back (WB) & Guardar resultados en el archivo de registros & 100ps
+ \\
+    \hline
+
+\end{tabular}\vspace{0.8cm}
+
+{ Entre cada fase hay registros especiales que almacenan temporalmente la información mientras fluye por el pipeline. Estos registros son fundamentales porque permiten que diferentes instrucciones estén en diferentes fases simultáneamente:}
+
+\quad
+
+\textbf{•   } \underline{Registro IF/ID: } { Almacena el valor del PC y la instrucción (64 bits).}
+
+\textbf{•   } \underline{Registro ID/EX: } { Contiene operandos extendidos y señales de control (128 bits).}
+
+\textbf{•   } \underline{Registro EX/MEM: } { Guarda resultados intermedios y flags (97 bits).}
+
+\textbf{•   } \underline{Registro MEM/WB: } { Almacena resultados finales y datos leídos (64 bits).}
+
+\quad
+
+{ Esta organización en fases permite que múltiples instrucciones estén siendo procesadas simultáneamente, lo que mejora significativamente el rendimiento de la CPU. Por ejemplo, mientras una instrucción está siendo decodificada, otra puede estar trayendo su instrucción de memoria, y otra más puede estar realizando cálculos en la ALU. }
+
+\quad
+\newpage
+
+
+
+
+
+
+
+
+
+\section{¿Qué tipo de instrucciones se usaron predominantemente en la práctica (R, I, J) y por qué?}
+
+\quad
+
+{ En la práctica predominaron las instrucciones de tipo I, la razón por que se considera la predomínate se puede explicar mencionando los propósitos de cada una de las instrucciones usadas:}
+
+\quad
+
+\textbf{•   } { Para Acceder a la Memoria se utilizaron las instrucciones como lw y sw, esto se debe que se opera directamente sobre un array en memoria y que, en cada iteración, se acceden repetidamente los elementos de los arreglos. Su función más importante fue hacer el intercambio de números en el ordenamiento.}
+
+\quad
+
+\textbf{•   } { Para los bucles se utilizaron las instrucciones bge y addiu, los bucles anidados, necesitan dos cosas, un contador que vaya incrementado el valor del índice, este es proporcionado por addiu y una condición de salida que permita para el ciclo para iniciar el siguiente, esto es proporcionado por bge.}
+
+\quad
+
+\textbf{•   } { Para las operaciones inmediatas se utilizó las instrucciones   addi, las operaciones de direcciones de memoria a menudo implican la adición de un offset inmediato para acceder a elementos específicos dentro de la memoria, en este caso acceder a los números dentro de los arreglos.}
+
+\quad
+\newpage
+
+
+
+
+
+
+
+
+
+\section{¿Cómo se ve afectado el rendimiento si se abusa del uso de instrucciones de salto (j, beq, bne) en lugar de usar estructuras lineales?}
+
+\quad
+
+{ El rendimiento en la arquitectura MIPS32 se ve significativamente afectado cuando se abusa de las instrucciones de salto (j, beq, bne) en comparación con estructuras lineales debido a varios factores fundamentales que impactan directamente en el flujo de ejecución y la eficiencia del procesador.}
+
+\quad
+
+\textbf{\underline{Impacto Principal: Predicción de Saltos}}
+
+\quad
+
+\textbf{•   } { Las instrucciones de salto rompen el flujo de ejecución secuencial del programa.}
+
+\quad
+
+\textbf{•   } { El procesador debe mantener un predictor de saltos para intentar anticipar correctamente la dirección del salto.}
+
+\quad
+
+\textbf{•   } { Cuando hay muchos saltos, aumenta la probabilidad de predicciones incorrectas.}
+
+\quad
+
+\textbf{•   } { Una predicción errónea resulta en una penalización significativa de rendimiento.}
+
+\quad
+
+\textbf{\underline{Impacto en el Pipeline}}
+
+
+\quad
+
+\textbf{•   } { El pipeline del procesador MIPS32 está optimizado para instrucciones secuenciales.}
+
+\quad
+
+\textbf{•   } { Los saltos condicionales (beq, bne) requieren:}
+
+\quad
+
+{1 -  } { AEvaluar la condición.}
+
+{2 -  } { Calcular la dirección de destino.}
+
+{3 -  } { Posiblemente rellenar el pipeline nuevamente.}
+
+
+\quad
+
+\textbf{•   } { Cuando hay múltiples saltos cercanos, esto puede causar:}
+
+\quad
+
+$\circ$ {Stalls en el pipeline.}
+
+$\circ$ {Mayor consumo de energía.}
+
+$\circ$ {Reducción en el throughput de instrucciones.}
+
+\quad
+
+\textbf{\underline{Limitaciones Arquitecturales}}
+
+\quad
+
+\textbf{1 -  } { Rango de Saltos:}
+
+\quad
+
+\textbf{•   } { Los saltos condicionales tienen un rango limitado de ±215 palabras.}
+
+\textbf{•   } { Saltos más largos requieren secuencias de múltiples instrucciones.}
+
+\textbf{•   } { Esto aumenta la complejidad y el overhead.}
+
+\quad
+
+\textbf{2 -  } { Formato de Instrucciones:}
+
+\quad
+
+\textbf{•   } { Las instrucciones de salto utilizan formato I-type.}
+
+\textbf{•   } { Requieren cálculos adicionales para resolver direcciones.}
+
+\textbf{•   } { Mayor complejidad en el decodificador.}
+
+\quad
+
+\textbf{\underline{Consideraciones Prácticas}}
+
+\quad
+
+\textbf{•   } { La optimización excesiva puede afectar la mantenibilidad del código.}
+
+\textbf{•   } { Algunos casos requieren inevitablemente el uso de saltos.}
+
+\textbf{•   } { El equilibrio entre rendimiento y claridad del código es crucial.}
+
+\textbf{•   } { Las herramientas modernas de compilación pueden optimizar automáticamente muchas estructuras de control.}
+
+\quad
+
+{ Mientras que las instrucciones de salto son fundamentales en la programación MIPS32, su uso excesivo puede tener un impacto significativo negativo en el rendimiento debido a los desafíos de predicción, el manejo del pipeline y las limitaciones arquitecturales. La mejor práctica es utilizarlas solo cuando sean verdaderamente necesarias, prefiriendo estructuras lineales cuando sea posible sin comprometer la funcionalidad o legibilidad del código.}
+
+\quad
+\newpage
+
+
+
+
+
+
+\section{¿Qué ventajas ofrece el modelo RISC de MIPS en la implementación de algoritmos básicos como los de ordenamiento?}
+
+\quad
+
+{El modelo RISC de MIPS ofrece varias ventajas significativas en la implementación de algoritmos de ordenamiento, fundamentadas en sus características arquitectónicas específicas:}
+
+\quad
+
+\textbf{\underline{Ventajas Principales}}
+
+\quad
+
+\textbf{1 -  } { Simplicidad y Predecibilidad:}
+
+\quad
+
+\textbf{•   } { Instrucciones simples y de ciclo único.}
+
+\textbf{•   } { Pipeline eficiente con menor riesgo de conflictos.}
+
+\textbf{•   } { Facilita la optimización de bucles críticos.}
+
+\quad
+
+\textbf{2 -  } { Eficiencia en Memoria:}
+
+\quad
+
+\textbf{•   } { Modelo de memoria consistente y predecible.}
+
+\textbf{•   } { Acceso secuencial optimizado para operaciones de comparación.}
+
+\textbf{•   } { Mejor rendimiento en acceso a arrays y estructuras de datos lineales.}
+
+\quad
+
+\textbf{3 -  } { Optimización del Pipeline:}
+
+\quad
+
+\textbf{•   } { Instrucciones simples permiten mejor flujo en el pipeline.}
+
+\textbf{•   } { Menos estancamientos por dependencias entre instrucciones.}
+
+\textbf{•   } { Mayor aprovechamiento de recursos computacionales.}
+
+
+
+\quad
+
+\textbf{\underline{Ventajas Específicas para Algoritmos de Ordenamiento}}
+
+\quad
+
+\textbf{1 -  } { Para Algoritmos Iterativos:}
+
+\quad
+
+\textbf{•   } { Burbuja: Mayor eficiencia en las iteraciones sucesivas.}
+
+\textbf{•   } { Selección: Optimización en los ciclos de búsqueda.}
+
+\textbf{•   } { Inserción: Mejor manejo de la memoria cache.}
+
+\quad
+
+\textbf{2 -  } { Para Algoritmos Recursivos:}
+
+\quad
+
+\textbf{•   } { Quicksort: Eficiente gestión del stack.}
+
+\textbf{•   } { Merge Sort: Optimización en la fusión de subarrays.}
+
+\textbf{•   } { Heap Sort: Mejor rendimiento en operaciones aritméticas.}
+
+
+\quad
+
+\textbf{\underline{Consideraciones Prácticas}}
+
+\quad
+
+\textbf{1 -  } { Implementación:}
+
+\quad
+
+\textbf{•   } {Código más limpio y mantenible.}
+
+\textbf{•   } { Fácil depuración debido al modelo de memoria consistente.}
+
+\textbf{•   } { Mejor portabilidad entre diferentes implementaciones.}
+
+\quad
+
+\textbf{2 -  } { Rendimiento:}
+
+\quad
+
+\textbf{•   } { Tiempo de ejecución más predecible.}
+
+\textbf{•   } { Mejor escalabilidad con conjuntos de datos grandes.}
+
+\textbf{•   } { Eficiente uso de recursos computacionales.}
+
+\quad
+
+{La arquitectura RISC de MIPS ofrece ventajas significativas para la implementación de algoritmos de ordenamiento debido a su diseño simple pero potente. La combinación de instrucciones simples, pipeline eficiente y modelo de memoria consistente crea un entorno ideal para optimizar tanto algoritmos iterativos como recursivos. Estas características no solo mejoran el rendimiento sino que también facilitan el desarrollo y mantenimiento del código, lo cual es especialmente valioso en aplicaciones que requieren manipulación intensiva de datos.}
+
+\quad
+\newpage
+
+
+
+
+
+
+
+
+\section{¿Cómo se usó el modo de ejecución paso a paso (Step, Step Into) en MARS para verificar la correcta ejecución del algoritmo?}
+
+\quad
+
+\textbf{\underline{Conceptos Fundamentales}}
+
+\quad
+
+\textbf{1 -  } {\underline{ Modo Paso a Paso (Step Over):}}
+
+\quad
+
+\textbf{•   } { Ejecuta una instrucción completa antes de pausar.}
+
+\textbf{•   } { No entra en las funciones llamadas.}
+
+\textbf{•   } { Ideal para seguir el flujo principal del programa.}
+
+\quad
+
+\textbf{2 -  } {\underline{ Entrar en Paso (Step Into):}}
+
+\quad
+
+\textbf{•   } { Penetra dentro de las funciones cuando las encuentra.}
+
+\textbf{•   } { Permite examinar el código fuente de las funciones.}
+
+\textbf{•   } { Útil para debuggear funciones específicas.}
+
+
+
+\quad
+
+\textbf{\underline{Fase de Preparación}}
+
+\quad
+
+\textbf{1 -  } {\underline{ Configuración inicial:}}
+
+\quad
+
+\textbf{•   } { Abrir el programa MIPS en MARS.}
+
+\textbf{•   } { Compilar el código para asegurar que no haya errores sintácticos.}
+
+\textbf{•   } { Configurar la ventana de registro pulsando View → CPU Registers.}
+
+\textbf{•   } { Activar la ventana de memoria si es necesario: View → Memory.}
+
+\quad
+
+\textbf{2 -  } {\underline{ Configuración breakpoints:}}
+
+\quad
+
+\textbf{•   } { Colocar el cursor en la línea donde desea comenzar la depuración.}
+
+\textbf{•   } { Presionar F2 o hacer clic derecho y seleccione "Toggle breakpoint".}
+
+\textbf{•   } { Los breakpoints aparecerán marcados con un punto rojo.}
+
+\quad
+
+\textbf{\underline{Fase de Ejecución Paso a Paso}}
+
+\quad
+
+\textbf{1 -  } {\underline{ Inicio de Depuración:}}
+
+\quad
+
+\textbf{•   } { Presionar F5 para ejecutar hasta el primer breakpoint.}
+
+\textbf{•   } { El programa se detendrá automáticamente en esa línea.}
+
+\quad
+
+\textbf{2 -  } {\underline{ Uso de Step Into (F7):}}
+
+\quad
+
+\textbf{•   } { Presionar F7 para ejecutar una instrucción.}
+
+\textbf{•   } { Observar cómo cambian los valores en la ventana de registros.}
+
+\textbf{•   } { Verificar el valor del Program Counter (PC) después de cada paso.}
+
+
+\quad
+
+\textbf{3 -  } {\underline{ Consideraciones Especiales:}}
+
+\quad
+
+\textbf{•   } { En las instrucciones branch o jump, observar que se ejecuta automáticamente la instrucción en el slot de delay.}
+
+\textbf{•   } {El registro PC mostrará primero la dirección de la instrucción en el slot de delay.}
+
+\textbf{•   } { Luego avanzará a la dirección de destino del salto.}
+
+
+\quad
+
+\textbf{\underline{Fase de Verificación}}
+
+\quad
+
+\textbf{1 -  } {\underline{ Monitoreo de Registros:}}
+
+\quad
+
+\textbf{•   } { Comparar los valores esperados con los reales en cada registro.}
+
+\textbf{•   } { Prestar especial atención a: }
+
+\quad
+
+$\circ$ {Registros \$t0-\$t9 para datos temporales.}
+
+$\circ$ {Registros \$s0-\$s7 para valores salvados.}
+
+$\circ$ {Registro \$v0 para resultados de funciones.}
+
+$\circ$ {Registro \$ra para direcciones de retorno.}
+
+\quad
+
+\textbf{2 -  } {\underline{ Identificación de Errores:}}
+
+\quad
+
+\textbf{•   } { Si encuentra un valor incorrecto, puede:}
+
+\quad
+
+$\circ$ {Reiniciar la depuración desde el último breakpoint.}
+
+$\circ$ {Modificar el código si es necesario.}
+
+$\circ$ {Agregar más breakpoints para mayor precisión.}
+
+\quad
+\newpage
+
+
+
+
+
+
+
+\section{¿Qué herramienta de MARS fue más útil para observar el contenido de los registros y detectar errores lógicos?}
+
+\quad
+
+{ La herramienta más útil en MARS para observar el contenido de los registros y detectar errores lógicos es el panel de Registros (Registers) junto con el Modo Paso a Paso (Single Step Mode). Esta combinación proporciona una visibilidad completa del estado del procesador durante la ejecución del programa.}
+
+\quad
+
+\textbf{ Panel de Registros}
+
+\quad
+
+\textbf{•   } { Se encuentra ubicado en la parte superior derecha de la interfaz de MARS.}
+
+\textbf{•   } { Muestra el valor actual de todos los registros de propósito general (\$zero hasta \$ra).}
+
+\textbf{•   } { Actualiza automáticamente sus valores durante la ejecución.}
+
+\textbf{•   } { Permite ver cambios en tiempo real mientras se ejecuta el programa.}
+
+\quad
+
+
+\textbf{ Modo Paso a Paso}
+
+\quad
+
+\textbf{•   } { Accesible mediante F7 o el botón correspondiente en la barra de herramientas.}
+
+\textbf{•   } { Ejecuta una instrucción por vez.}
+
+\textbf{•   } { Facilita el seguimiento detallado de modificaciones en los registros.}
+
+\textbf{•   } { Ideal para verificar operaciones aritméticas y lógicas.}
+
+
+
+
+\quad
+\newpage
+
+
+
+
+
+
+
+\section{¿Cómo puede visualizarse en MARS el camino de datos para una instrucción tipo R? (por ejemplo: add)}
+
+\quad
+
+{ Para visualizar el camino de datos de una instrucción tipo R en MARS, podemos utilizar varias herramientas integradas que nos permiten observar paso a paso cómo fluyen los datos a través del pipeline.}
+
+\quad
+
+\textbf{HERRAMIENTAS EN MARS PARA VISUALIZAR EL CAMINO DE DATOS:}
+
+\quad
+
+\textbf{\underline{Panel de Registros: }}
+
+\quad
+
+\textbf{•   } { Abrir MARS y escriba una instrucción tipo R simple como add \$t0, \$t1, \$t2.}
+
+\textbf{•   } { Activar la ejecución paso a paso (botón de "single-step").}
+
+\textbf{•   } { Observar en el panel de registros cómo cambian los valores durante cada etapa.}
+
+
+\quad
+
+\textbf{\underline{Herramienta de Visualización de Referencias de Memoria: }}
+
+\quad
+
+\textbf{•   } { Desde el menú Tools, seleccionar "Memory Reference Visualization".}
+
+\textbf{•   } { Conectar la herramienta haciendo clic en "Connect to MIPS".}
+
+\textbf{•   } { Ejecutar el programa paso a paso para ver el flujo de datos}
+
+\quad
+
+\textbf{\underline{Configuración de Velocidad de Ejecución: }}
+
+\quad
+
+\textbf{•   } { Ajustar la velocidad de ejecución a aproximadamente 10 instrucciones por segundo.}
+
+\textbf{•   } { Esto le permitirá observar claramente cada etapa del proceso.}
+
+\quad
+
+\textbf{SECUENCIA DE OBSERVACIÓN: }
+
+\quad
+
+{Durante la ejecución de la instrucción ADD, observAR:}
+
+\quad
+
+\textbf{1 -  } { La lectura simultánea de los registros fuente (\$t1 y \$t2).}
+
+\textbf{2 -  } { La operación de suma en la ALU.}
+
+\textbf{3 -  } { El almacenamiento del resultado en el registro destino (\$t0).}
+
+\quad
+\newpage
+
+
+
+
+
+
+\section{¿Cómo puede visualizarse en MARS el camino de datos para una instrucción tipo I? (por ejemplo: lw)}
+
+\quad
+
+\textbf{\underline{Configuración Inicial}}
+
+\quad
+
+\textbf{• } { Abrir MARS en la computadora.}
+
+\quad
+
+\textbf{• } { Ir a “File”, seguido ir a “New” para crear un archivo .asm, o ve a “Open” y selecciona tu archivo .asm de preferencia que contenga el código MIPS.}
+
+\quad
+
+\textbf{• } { Hacer click en el botón Assemble (el icono de la llave inglesa) para ensamblar tu código.}
+
+\quad
+
+\textbf{\underline{Acceder a la Vista del Datapath}}
+
+\quad
+
+\textbf{• } { Una vez que el programa esté ensamblado, ir al menú Tools de la barra superior.}
+
+\quad
+
+\textbf{• } { Selecciona MIPS para luego ir a “MIPS X-Ray”, esto abrirá una nueva ventana que muestra una representación gráfica del datapath MIPS.}
+
+\quad
+
+\textbf{\underline{Ejecutar la Instrucción lw paso a paso}}
+
+\quad
+
+\textbf{• } { En la ventana principal de MARS (donde está el código y los registros), asegúrate de que el contador paso a paso esté apuntando a la instrucción lw que deseas visualizar. Puedes hacer esto en el datapath reiniciando la simulación en “Reset” y luego usando el botón “Run one step at time” para avanzar hasta esa instrucción, así empezara a visualizarse datapath.}
+
+\quad
+
+\textbf{• } { Observa la ventana del Datapath: A medida que ejecutas la instrucción lw paso a paso, verás cómo las señales y los datos fluyen a través de los componentes del datapath. Los caminos activos y los valores en los registros y unidades funcionales se iluminarán o mostrarán sus valores.}
+
+
+\quad
+\newpage
+
+
+
+
+
+
+
+
+\section{Justificar la elección del algoritmo alternativo}
+
+\quad
+
+{ La elección del algoritmo Selection Sort se debe a su alto rendimiento, el nulo uso de memoria adicional y que no tiene mucha dificultad para ser comprendido, esto se debe ya que cuenta con la característica de ser un algoritmo iterativo, el cual es bien sabido le da una ventaja sobre algoritmos de ordenamiento que usan recursividad, su ventaja principal en este caso es que siempre buscara hacer el menor número de iteraciones posibles.}
+
+\quad
+
+{ Hay que recalcar que cuenta con la desventaja de que este rendimiento es fijo según el número de elementos, por lo que siempre tardara lo mismo, también que no es recomendable para arreglos muy grandes debido a baja drásticamente su rendimiento.}
+
+\quad
+\newpage
+
+
+
+
+
+
+
+
+
+\section{Análisis y Discusión de los Resultados}
+
+\quad
+
+{ Se puede concluir que cada uno de los diferentes registros que existen en MIPS32 resultaron ser útiles para la realización de esta práctica, algunos más usados que otros, pero al final todos cumplen con su propósito de guardar valores o direcciones necesarias para el correcto funcionamiento de los algoritmos de ordenamiento burbuja y el de ordenamiento selección.}
+
+\quad
+
+{ Algo a destacar es que para los dos algoritmos realizados, las instrucciones predominantes fueron las de tipo I lo que no fue sorpresa, ya que cuentan con el uso de las estructuras de control (bucles anidados y saltos), que son las responsables de llevar a cabo el ordenamiento.}
+
+\quad
+
+{Otra cosa a relatar fue el aprendizaje de los caminos de datos para distintos tipos de instrucciones que fue posible gracias a la herramienta que ofrece la plataforma MARS donde el datapath puede mostrar todos los caminos posibles.}
+
+\quad
+\newpage
+
+\end{document}
