@@ -1,0 +1,611 @@
+
+\documentclass{article}
+\documentclass[titlepage]{article}
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[spanish]{babel}
+\usepackage{xcolor,colortbl}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{booktabs} % Para líneas horizontales más profesionales
+\usepackage{array} % Para un mejor control sobre las columnas
+
+
+\begin{document}
+
+\begin{titlepage}
+        \centering
+        {\bfseries\LARGE Universidad de Carabobo \par}
+        \vspace{1cm}
+        {\scshape\Large Computaci\'on (Arquitectura del Computador) \par}
+        \vspace{3cm}
+        {\scshape\Huge PROYECTO 10 - Estrategias de Escritura en Cach\'e (Write-Through vs Write-Back) \par}
+        \vspace{3cm}
+        {\itshape\Large Informe T\'ecnico \par}
+        \vfill
+        {\Large Autor: \par}
+        {\Large José M. Díaz M. (25.682.785) \par}
+        {\Large Sergio José Noguera (30.572.211) \par}
+        \vfill
+        {\Large 14 de octubre de 2025 \par}
+\end{titlepage}
+
+
+\section{Problema}
+
+\quad
+
+\textbf{ \underline{Contexto General} :}
+
+\quad
+
+{En la arquitectura de computadores modernos, el rendimiento del sistema depende en gran medida del manejo eficiente de la jerarquía de memoria, en particular de la memoria caché, que actúa como intermediaria entre la CPU y la memoria principal (RAM). Dado que el acceso a la RAM es significativamente más lento que el acceso a la caché, el comportamiento de esta última influye directamente en el desempeño general del sistema.
+Una de las decisiones críticas en el diseño de una caché es la estrategia de escritura que se emplea para manejar las operaciones de escritura (write). Dos técnicas ampliamente utilizadas para este fin son:}
+
+\quad
+
+
+\begin{itemize}
+    \item \textbf{Write-Through:} {Escritura que se realiza tanto en la caché como inmediatamente en la RAM.}
+    \item \textbf{Write-Back:} {Escritura que se realiza solo en la caché, marcando el bloque como "sucio" (dirty), y se escribe a la memoria principal solo cuando ese bloque es reemplazado.}
+\end{itemize}
+
+\quad
+
+{Para elegir qué bloque reemplazar cuando la caché está llena, una política eficiente es la de LRU (Least Recently Used), que reemplaza el bloque que menos recientemente se ha usado.}
+
+\quad
+
+{Cada una de estas estrategias presenta ventajas y desventajas en términos de rendimiento, coherencia y frecuencia de acceso a la memoria principal. En el caso de Write-Through, garantiza la coherencia, pero genera una mayor latencia en el proceso (tiempo de espera por la escritura dual) y puede tener un alto tráfico de datos hacia la RAM. Mientras que Write-Back es más rápida y puede reducir el tráfico hacia la RAM, pero requiere mecanismos adicionales para asegurar la coherencia y manejar los bloques sucios.}
+
+\quad
+
+
+\textbf{ \underline{Objetivo del Proyecto} :}
+
+\quad
+
+{Con el fin de analizar estas estrategias de escritura de forma práctica, se requiere el diseño e implementación de una herramienta de simulación de caché en lenguaje C++11 o superior, que permita emular el funcionamiento de una caché de datos para observar y comparar el comportamiento de ambas estrategias de escritura bajo condiciones controladas, incluyendo una  política de reemplazo LRU (Least Recently Used).}
+
+\quad
+
+{En este simulador se compararán ambas estrategias bajo un conjunto predefinido de accesos a memoria (datos sintéticos), es decir, secuencias de direcciones y valores de escrituras generadas manualmente; también, debe permitir analizar los resultados mediante estadísticas y métricas clave (tiempo de ejecución, cantidad de escrituras a RAM, coherencia de datos, etc.).
+}
+
+
+\quad
+
+{La simulación deberá cumplir con lo siguiente:}
+
+
+
+\begin{itemize}
+    \item Emular el comportamiento de la caché bajo ambas estrategias de escritura usando la política LRU (Least Recently Used) para reemplazos.
+    \item Comparar la eficiencia de ambas estrategias de escritura en cuanto a: 
+
+     \begin{itemize}
+        \item La cantidad de escrituras efectivas realizadas en la RAM.
+        \item El tiempo total de ejecución.
+        \item La preservación de coherencia de los datos entre la caché y la memoria principal.
+    \end{itemize}
+
+    \item Mostrar en consola el proceso de cargas, escrituras, reemplazos y verificaciones de coherencia.
+   
+\end{itemize}
+
+\quad
+
+
+\textbf{ \underline{Problema Específico} :}
+
+\quad
+
+{Elaborar un programa en lenguaje C++ (o superior) que simule el funcionamiento de un sistema de memoria, que permita analizar y comparar el comportamiento de ambas estrategias de escritura en caché bajo condiciones controladas y predefinidas. Esta herramienta de simulación debe cumplir con las siguientes características:}
+
+\begin{enumerate}
+    \item Caché con mapeo asociativo total de tamaño fijo (4 bloques).
+    \item Bloques de memoria de tamaño fijo (16 bytes).
+    \item Memoria principal (RAM) simulada con 256 bloques.
+    \item Implementación de dos estrategias de escritura: write-through y write-back.
+    \item Política de reemplazo de bloques usando el LRU (Least Recently Used).
+    \item Registro de estadísticas, incluyendo:    
+
+     \begin{itemize}
+        \item Número total de escrituras a RAM.
+        \item Número de reemplazos con escritura a RAM en write-back.
+    \end{itemize}
+
+    \item Medición del tiempo que toma cada estrategia en realizar las operaciones de escritura.
+    \item Verificación de la coherencia entre la caché y la memoria RAM al final de cada simulación.    
+   
+\end{enumerate}
+
+\quad
+\newpage
+
+{Se trabajará con las siguientes secuencias predefinidas:}
+
+\quad
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=10cm\textwidth]{figura_03_(trabajo_final)}
+    \caption{Secuencias}
+    \label{fig:img1}
+\end{figure}
+
+
+\quad
+
+{Estas secuencias permiten simular:}
+
+
+\begin{itemize}
+    \item Accesos repetidos a las mismas direcciones (Ej: 0, 16), lo cual es útil para observar el efecto del cache hit.
+    \item Reemplazos inevitables debido al tamaño limitado de la caché (4 bloques).
+    \item Situaciones donde los bloques sucios deben ser escritos en RAM (en Write-Back), permitiendo analizar el costo adicional del mantenimiento de coherencia.
+\end{itemize}
+
+\quad
+
+
+\textbf{ \underline{Preguntas que orientan el problema} :}
+
+\quad
+
+\begin{itemize}
+    \item ¿Qué diferencia práctica existe en la cantidad de escrituras a RAM entre Write-Through y Write-Back?
+    \item ¿Qué estrategia ofrece mayor eficiencia en términos de tiempo de ejecución?
+    \item ¿Cómo impacta el uso de una política de reemplazo como LRU en la coherencia de datos al emplear Write-Back?
+    \item ¿Cuál de las estrategias resulta más adecuada en escenarios con accesos frecuentes o repetitivos a las mismas direcciones?
+\end{itemize}
+
+\quad
+\newpage
+
+
+
+
+
+\section{Técnicas Computacionales para su Solución (algoritmos, estructuras de datos, etc.)}
+
+\quad
+
+{La implementación del simulador de estrategias de escritura en memoria caché (Write-Through y Write-Back), desarrollada en C++11, se apoya en el uso de diversas técnicas computacionales que abarcan desde estructuras de datos eficientes hasta algoritmos de reemplazo y simulación temporal. A continuación se describen los elementos clave utilizados en la solución.}
+
+\quad
+
+\textbf{ \underline{Estructuras de Datos} :}
+
+\quad
+
+\begin{itemize}
+    \item {\underline{Estructura CacheLine}:}
+
+    \quad
+
+    {Cada línea de caché (también llamada línea de bloque) está representada por una estructura CacheLine, que encapsula los siguientes atributos necesarios para la simulación:}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=10cm\textwidth]{figura_02_(trabajo_final)}
+        \label{fig:img1}
+    \end{figure}
+    
+    
+        \begin{itemize}
+            \item valid (bool/int): Indica si la línea contiene un bloque con datos válidos.
+            \item tag (uint32\_t): Identificador del bloque de memoria correspondiente.
+            \item dirty (bool/int): Usado solo en Write-Back; para marcar si el bloque ha sido modificado pero aún no escrita a RAM.
+            \item data (int): Dato almacenado en la caché (simulado como un entero).
+            \item last\_used (int): Contador (marca temporal) usado para implementar LRU y para determinar cuál línea fue la menos recientemente utilizada.
+
+        \end{itemize}
+    
+    \item {\underline{Arreglo de Caché y Memoria Principal}:}
+
+    \quad
+
+    {Se utilizan dos estructuras "std::vector":}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=10cm\textwidth]{figura_01_(trabajo_final)}
+        \label{fig:img1}
+    \end{figure}
+
+    \quad
+    \newpage
+
+    \begin{itemize}
+        \item RAM: Arreglo de enteros que simula la memoria principal (256 bloques), usada para lecturas/escrituras.
+        \item Cache: Representa la memoria caché con una cantidad fija de líneas (4 en este caso).
+
+        \item Variables globales para:
+
+        \begin{itemize}
+            \item Contar el número de escrituras a RAM.
+            \item Contar reemplazos con escritura a RAM (para write-back).
+            \item Mantener un contador global para el algoritmo LRU.
+        \end{itemize}
+        
+    \end{itemize}    
+    
+   
+\end{itemize}
+
+\quad
+
+\textbf{ \underline{Funciones} :}
+
+\quad
+
+\begin{itemize}
+
+    \item {\underline{Inicialización (init\_cache\_ram)}:}
+
+        \begin{itemize}
+            \item Inicializar todas las líneas de la caché como inválidas.
+            \item Inicializar RAM con valores cero.
+            \item Reiniciar contador global de accesos.
+        \end{itemize}
+
+    \quad
+
+
+    \item {\underline{Búsqueda de Línea en caché (find\_line)}:}
+
+        \begin{itemize}
+            \item Buscar si un bloque de memoria ya se encuentra en caché usando el campo tag solicitado y válido.
+            \item Si el bloque se encuentra en cache, hay que actualizar el contador global de acceso (last\_used) para esa línea y se debe retornar el índice de esa misma línea, o  retornar -1 si el bloque no existe.
+            \item Se actualiza el last\_used para efectos de LRU.
+        \end{itemize}
+
+    \quad
+    
+    \item {\underline{Búsqueda de Línea Libre (find\_free\_line)}:}
+
+        \begin{itemize}
+            \item Recorrer la caché para buscar la 1ra línea inválida (libre o vacía).
+            \item Si la línea se encuentra, hay que actualizar el last\_used y se debe retornar el índice de la línea para su uso inmediato.
+            \item Si no hay línea, hay que retornar -1.
+        \end{itemize}
+
+    \quad
+
+    \item {\underline{Reemplazo de Línea con LRU (replace\_line\_lru)}:}
+
+        \begin{itemize}
+            \item Cuando la caché está llena, se aplica la política Least Recently Used (LRU) para buscar la línea con el menor valor en last\_used (la menos recientemente utilizada).
+            \item Si la línea seleccionada está sucia, es decir, marcada como dirty (dirty == true), en el caso de Write-Back, se fuerza la escritura en RAM antes de reemplazarla.
+            \item Se invalida la línea reemplazada y resetea sus campos.
+            \item Se retorna el índice de la línea reemplazada.
+        \end{itemize}
+
+    \quad
+
+
+    \item {\underline{Estrategia de Escritura Write-Through (write\_through)}:}
+
+        \begin{itemize}
+            \item Se calcula el tag (etiqueta que identifica el bloque almacenado) a partir de la dirección.
+            \item Se busca el bloque en caché con la función find\_line.
+            \item Si no está en caché, hay que buscar línea libre con la función find\_free\_line; si no hay, reemplazar con la función replace\_line\_lru.
+            \item Se carga el bloque desde RAM.
+            \item Se escribe el dato en caché y en RAM inmediatamente.
+            \item Se incrementa el contador de escrituras a RAM.
+        \end{itemize}
+
+    \quad
+
+
+     \item {\underline{Estrategia de Escritura Write-Back (write\_back)}:}
+
+        \begin{itemize}
+            \item Es similar a write-through, con la diferencia de que en la escritura solo se modifica la caché y se marca la línea de bloque como sucia (dirty = true).
+            \item La escritura para actualizar la RAM ocurre únicamente cuando esa línea se reemplaza.
+            \item Se reduce el tráfico a la memoria principal, pero se requiere una validación de coherencia.
+            \item Se utiliza dirty y last\_used de forma activa.
+        \end{itemize}
+
+    \quad
+
+    \item {\underline{Verificación de Coherencia (verificar\_coherencia)}:}
+
+    \quad
+
+        {Esta función analiza si los datos en caché y RAM están correctamente sincronizados.}
+
+        \begin{itemize}
+            \item Para cada línea válida:
+
+                \begin{itemize}
+                    \item En write-through, los datos de caché y RAM deben coincidir (ser iguales).
+                    \item En write-back, hay que verificar que caché y RAM sean iguales si el bloque no está sucio (de lo contrario hay incoherencia). Si el bloque está sucio, caché y RAM pueden ser diferentes.
+                \end{itemize}
+            
+            \item Reportar si hay incoherencias.
+        \end{itemize}
+
+    \quad
+        
+\end{itemize}   
+
+\textbf{ \underline{Manejo del Tiempo} :}
+
+\quad
+
+\begin{itemize}
+    \item Se utiliza la librería <ctime> para medir el tiempo de ejecución de cada estrategia.
+    \item Se utiliza clock() para medir el tiempo en milisegundos que toma ejecutar las escrituras.
+    \item Se muestran métricas como:
+        \begin{itemize}
+            \item Cantidad de escrituras efectivas a la RAM.
+            \item Total de reemplazos forzados con escritura en Write-Back.
+            \item Coherencia de los datos al finalizar la ejecución.
+        \end{itemize}            
+\end{itemize}
+
+\quad
+
+\textbf{ \underline{Main (Algoritmo Principal)} :}
+    
+\quad
+
+\begin{itemize}
+    \item Definir arreglos con direcciones y valores a escribir.
+    \item Inicializar caché y RAM.
+    \item Ejecutar simulación write-through:
+
+    \begin{itemize}
+        \item Realizar las escrituras.
+        \item Mostrar estadísticas.
+        \item Verificar coherencia.
+        \item Medir tiempo de ejecución.
+    \end{itemize}
+
+    \item Ejecutar simulación write-back:
+
+    \begin{itemize}
+        \item Realizar las escrituras.
+        \item Hacer flush final para escribir bloques sucios restantes.
+        \item Mostrar estadísticas.
+        \item Verificar coherencia.
+        \item Medir tiempo de ejecución.
+    \end{itemize}
+    
+\end{itemize} 
+
+{\underline{Nota}: Un flush (vaciado de búfer) es una operación fundamental en las estrategias de escritura de memoria que consiste en forzar la transferencia inmediata de datos desde un búfer temporal hacia su destino final.}
+
+\quad
+
+\textbf{ \underline{Conclusión de esta sección} :}
+
+\quad
+
+{El simulador utiliza un diseño modular y claro, apoyado en estructuras simples pero eficientes (vector, struct, enteros y booleanos) para representar una caché de mapeo asociativo total con política de reemplazo LRU. Las estrategias de escritura están claramente diferenciadas y permiten su análisis práctico a partir de estadísticas precisas y datos sintéticos predefinidos.}
+
+\quad
+\newpage
+
+
+
+\section{Análisis y Comparación de Resultados}
+
+\quad
+
+\textbf{ \underline{Contexto del experimento} :}
+
+\quad
+
+{El proyecto tuvo como propósito comparar el comportamiento de las estrategias de escritura en caché Write-Through y Write-Back, utilizando un mapeo asociativo total y una política de reemplazo LRU (Least Recently Used).}
+
+\quad
+
+{La simulación se desarrolló en C++, compilada con G++ en entorno GNU/Linux (Ubuntu), siguiendo las reglas de un archivo Makefile para automatizar la compilación y ejecución.}
+
+\quad
+
+{Los datos utilizados fueron datos sintéticos, generados de manera controlada para producir una secuencia específica de direcciones y valores de escritura, lo que permite analizar con precisión el comportamiento de la caché bajo condiciones reproducibles.}
+
+\quad
+
+\textbf{ \underline{Resultados obtenidos} :}
+
+\quad
+
+\begin{tabular}{| p{4cm} |p{4cm} | p{4cm} |}
+    \hline
+    PARÁMETRO & WRITE-THROUGH & WRITE-BACK \\
+    \hline
+    Total escrituras en RAM & 8 & 7\\
+    \hline
+    Reemplazos con escritura en RAM & — & 3 \\
+    \hline
+    Coherencia & Garantizada & Garantizada \\
+    \hline
+    Tiempo total (ms) & Varia (mayor/menor) & Varia (menor/mayor) \\
+    \hline
+
+\end{tabular}\vspace{0.8cm}
+
+\quad
+
+\textbf{ \underline{Análisis detallado de los resultados} :}
+
+\quad
+
+
+\begin{itemize}
+
+    \item  {\underline{Cantidad de escrituras en RAM}:}
+
+    \begin{itemize}
+        \item En Write-Through, cada operación de escritura de actualización realizada en la caché se replica inmediatamente en la memoria principal, lo que explica que el número total de escrituras (8) coincida con el número de accesos de escritura realizados.
+        \item En Write-Back, las escrituras solo se envían a RAM cuando un bloque sucio (“dirty”) debe ser reemplazado o al finalizar la simulación. Por ello, el total de escrituras, incluyendo las de reemplazo, es de 7 (que es menor), evidenciando mayor eficiencia en el uso de la RAM.
+    \end{itemize}
+
+    \quad
+
+    \item  {\underline{Reemplazos de bloques y política LRU}:}
+
+    \begin{itemize}
+        \item La función LRU  (replace\_line\_lru) reemplazó correctamente los bloques menos utilizados recientemente cuando la caché estaba llena, demostrando un manejo coherente de la política de reemplazo.
+        \item En Write-Back, se produjeron 3 reemplazos, lo cual concuerda con la configuración de 4 líneas de caché y la secuencia de accesos. Esto también implicó tener que escribir el bloque sucio en RAM antes de liberar la línea.
+    \end{itemize}
+
+    \quad
+
+    \item  {\underline{Coherencia de datos}:}
+    
+    \quad
+
+    \begin{itemize}
+        {En ambas estrategias de escritura, la función de verificación (verificar\_coherencia) confirmó que la información entre la caché y la RAM es consistente al finalizar la ejecución, garantizando la integridad y coherencia de los datos.}
+
+        \quad
+
+        Esto demuestra que:
+        
+        \quad
+        
+        \item Write-Through logra coherencia inmediata por diseño.
+        \item Write-Back mantiene coherencia diferida pero controlada, gracias al uso de la marca dirty y al proceso de escritura final de bloques sucios.
+    \end{itemize}
+
+    \quad
+
+    \item  {\underline{Tiempos total de ejecución}:}
+
+    \quad
+
+    {En algunas de las ejecuciones, Write-Through fue ligeramente más rápido (Tiempo de Write-Through $<$ Tiempo de Write-Back), mientras que en otras Write-Back fue más eficiente (Tiempo de Write-Through $>$ Tiempo de Write-Back). Estas diferencias de tiempo son esperables y se deben a factores que son externos a la lógica del código, como los siguientes:}
+
+    \begin{itemize}
+        \item El uso del objeto de flujo de salida estándar (std::cout) para mostrar datos de las operaciones de salida en la consola o en la pantalla; es decir, muchos prints pueden afectar la medición.
+        \item Variaciones mínimas en el rendimiento del CPU y en el entorno del sistema operativo sistema operativo durante cada ejecución.
+    \end{itemize}
+
+    \quad
+
+    En general: 
+
+    \begin{itemize}
+        \item Esto no afecta la corrección funcional de la simulación.
+        \item En simulaciones pequeñas, los tiempos son dominados por la sobrecarga del sistema y no por el costo real de memoria.
+        \item En simulaciones grandes (cientos o miles de accesos), siempre y cuando se efectúen en un entorno mas controlado y sin tantas salidas por pantalla, Write-Back tiende a ser consistentemente más eficiente en tiempo, ya que reduce el número de escrituras en memoria principal (RAM).
+    \end{itemize}
+
+    \quad
+
+    \item  {\underline{Respuestas de las preguntas}:}
+
+    \quad
+
+    \begin{itemize}
+    
+        \item ¿Qué diferencia práctica existe en la cantidad de escrituras a RAM entre Write-Through y Write-Back?
+
+        \quad
+        
+        {En los resultados obtenidos, la simulación del modo Write-Through realizó 8 escrituras en la memoria principal (RAM), mientras que el modo Write-Back efectuó 7 escrituras efectivas, acompañadas de 3 reemplazos de bloques sucios.}
+
+        \quad
+
+        {Esto ocurre porque en Write-Through cada operación de escritura actualiza inmediatamente tanto la caché como la memoria principal, generando un mayor número de accesos a RAM. En cambio, Write-Back acumula los cambios en la caché y solo escribe en RAM cuando un bloque modificado (“dirty”) debe reemplazarse o al finalizar la simulación.}
+        
+        \quad
+
+        {En términos prácticos, Write-Back representa una mayor eficiencia en el uso del ancho de banda de memoria y una reducción en el tráfico hacia la RAM.}
+
+        \quad
+
+        \item ¿Qué estrategia ofrece mejor latencia y mejor coherencia?           
+
+            \begin{itemize}
+
+                \quad
+                
+                \item Write-Back ofrece mejor latencia.
+
+                \quad
+                
+                {En Write-Back, las escrituras se realizan solo en la caché, y la actualización a la memoria principal (RAM) se difiere hasta que el bloque modificado (“sucio”) deba ser reemplazado. Esto significa que la mayoría de las operaciones de escritura no requieren acceso inmediato a la RAM, lo que reduce los tiempos de espera y mejora la latencia promedio del sistema.}
+
+                \quad
+                
+                {En cambio, en Write-Through, cada vez que se escribe un dato, la operación se envía simultáneamente a la RAM, generando más tráfico y mayor tiempo por acceso, ya que la RAM es más lenta que la caché.}
+
+                \quad
+                
+                \item Write-Through ofrece mejor coherencia.
+
+                \quad
+
+                {Write-Through actualiza la RAM al mismo tiempo que la caché. Por tanto, los datos en ambas memorias siempre están sincronizados, eliminando el riesgo de que la caché contenga información diferente a la memoria principal.}
+
+                \quad
+                
+                {En cambio, Write-Back retrasar la actualización hasta que se reemplace un bloque sucio, lo cual puede provocar incoherencias temporales entre caché y RAM (aunque el sistema lo controla mediante la marca dirty).}
+                
+            \end{itemize}
+
+        \quad
+        
+        \item ¿Cómo impacta el uso de una política de reemplazo como LRU en la coherencia de datos al emplear Write-Back?
+        
+        \quad
+
+        {La política LRU (Least Recently Used) garantiza que, al reemplazar bloques en la caché, siempre se expulse el bloque menos utilizado recientemente.}
+        
+        \quad
+        
+        {En el contexto de Write-Back, LRU ayuda a mantener la coherencia porque antes de reemplazar un bloque sucio, el simulador fuerza su escritura en RAM, asegurando que los datos modificados no se pierdan.}
+        
+        \quad
+        
+        {Así, LRU colabora directamente con la coherencia, asegurando que la memoria principal siempre contenga la versión más actualizada antes de eliminar el bloque de la caché.}
+
+        \quad
+        
+        \item ¿Cuál de las estrategias resulta más adecuada en escenarios con accesos frecuentes o repetitivos a las mismas direcciones?
+
+        \quad
+
+        En escenarios donde las mismas direcciones de memoria son accedidas repetidamente (alta localidad temporal), la estrategia Write-Back resulta más adecuada.
+
+        \quad
+        
+        Esto se debe a que las escrituras repetidas afectan solo la copia del dato en caché, y la memoria principal se actualiza una sola vez cuando el bloque es reemplazado, reduciendo drásticamente el tráfico de escritura.
+
+        \quad
+        
+        En cambio, Write-Through escribiría en memoria principal cada vez, incluso si se trata del mismo dato, generando más latencia y menor eficiencia.
+        
+    \end{itemize}
+    
+
+
+    \quad
+
+    \item  {\underline{Conclusiones Finales}:}
+
+    \quad
+
+    {En conjunto, este proyecto permitió entender de manera práctica cómo las estrategias de escritura en memoria caché impactan el equilibrio entre rendimiento y coherencia de datos.}
+
+    \quad
+
+    {La experiencia mostró que Write-Back es más eficiente, mientras que Write-Through es más seguro, y que la elección entre ambos depende del tipo de sistema y las prioridades del diseño.}
+
+    \quad
+
+    {Además, la implementación en C++ fortaleció las habilidades de programación estructurada y el razonamiento lógico, consolidando los conocimientos sobre arquitectura de computadores, algoritmos y gestión eficiente de memoria.}    
+    
+\end{itemize} 
+
+\end{document}
